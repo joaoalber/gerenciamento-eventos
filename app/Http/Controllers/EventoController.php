@@ -9,7 +9,7 @@ use App\{Participante, Evento};
 class EventoController extends Controller
 {
     public function index(){
-        // $eventos = Evento::all();
+        // $eventos = Evento::paginate(5);
         // return view('evento', compact('eventos'));
         return view('evento');
     }

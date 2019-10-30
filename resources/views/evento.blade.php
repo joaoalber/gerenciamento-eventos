@@ -50,14 +50,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($eventos as $evento)
                                 <tr id="teste"></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                    <td>f</td>
-                                    <td>g</td>
-                                    <td><div><a href="/evento/presenca/1" class="btn btn-primary">Go somewhere</a></div></td>
+                                    <td>{{ $evento->nome }}</td>
+                                    <td>{{ $evento->data }}</td>
+                                    <td>{{ $evento->hora }}</td>
+                                    <td>{{ $evento->local }}</td>
+                                    <td>{{ $evento->descricao }}</td>
+                                    <td><div><a href="{{url('evento/presenca/'.$evento->id)}}" class="btn btn-primary">Go somewhere</a></div></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
