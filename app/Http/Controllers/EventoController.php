@@ -9,8 +9,9 @@ use App\{Participante, Evento};
 class EventoController extends Controller
 {
     public function index(){
-        $eventos = Evento::all();
-        return view('indexevento', compact('eventos'));
+        // $eventos = Evento::paginate(5);
+        // return view('evento', compact('eventos'));
+        return view('evento');
     }
 
     public function create(){
@@ -58,5 +59,9 @@ class EventoController extends Controller
             $evento->delete();
             return back()->with('success','Evento deletado com sucesso!');
         }
+    }
+    public function listaPresenca(){
+        $eventos = Evento::all();
+        return view('listapresenca', compact('eventos'));
     }
 }

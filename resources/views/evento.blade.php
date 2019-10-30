@@ -41,42 +41,25 @@
                         <table class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Apelido</th>
-                                    <th scope="col">Avatar</th>
-                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Hora</th>
+                                    <th scope="col">Local</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($eventos as $evento)
                                 <tr id="teste"></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
+                                    <td>{{ $evento->nome }}</td>
+                                    <td>{{ $evento->data }}</td>
+                                    <td>{{ $evento->hora }}</td>
+                                    <td>{{ $evento->local }}</td>
+                                    <td>{{ $evento->descricao }}</td>
+                                    <td><div><a href="{{url('evento/presenca/'.$evento->id)}}" class="btn btn-primary">Go somewhere</a></div></td>
                                 </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
