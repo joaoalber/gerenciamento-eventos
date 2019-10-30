@@ -41,9 +41,12 @@
                         <table class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Apelido</th>
-                                    <th scope="col">Avatar</th>
-                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Hora</th>
+                                    <th scope="col">Local</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,31 +54,9 @@
                                     <td>a</td>
                                     <td>s</td>
                                     <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
-                                </tr>
-                                <tr ></td> 
-                                    <td>a</td>
-                                    <td>s</td>
-                                    <td>d</td>
-                                   
+                                    <td>f</td>
+                                    <td>g</td>
+                                    <td><div><a href="/evento/presenca/1" class="btn btn-primary">Go somewhere</a></div></td>
                                 </tr>
                             </tbody>
                         </table>
