@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="col">
-        <p> Nome: {{$participante->nome}}</p>
+        <p>Nome: {{$participante->nome}}</p>
         <p>RG: {{$participante->rg}}</p>
         <p>CPF: {{$participante->cpf}}</p>
         <p>email: {{$participante->email}}</p>
