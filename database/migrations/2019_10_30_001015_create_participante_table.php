@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateParticipanteTable extends Migration
 {
     /**
@@ -18,11 +19,12 @@ class CreateParticipanteTable extends Migration
             $table->string('nome');
             $table->string('rg');
             $table->string('cpf');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('telefone');
             $table->date('data_nascimento');
             $table->string('organizacao');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

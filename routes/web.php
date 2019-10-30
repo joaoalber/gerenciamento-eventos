@@ -23,8 +23,10 @@ Route::prefix('evento')->group(function() {
 
 Route::prefix('participante')->group(function() {
     Route::get('/','ParticipanteController@index');
-    Route::get('/create','ParticipanteController@create');
-    Route::post('/','ParticipanteController@store');
-    Route::put('/{evento_id}','ParticipanteController@update');
-    Route::delete('/{evento_id}', 'ParticipanteController@destroy');
+    Route::get('create','ParticipanteController@create');
+    Route::post('store','ParticipanteController@store');
+    Route::get('edit/{participante}','ParticipanteController@edit');
+    Route::post('update/{participante}', 'ParticipanteController@update');
+    Route::get('delete/{participante}', 'ParticipanteController@destroy');
+    Route::get('show/{participante}', 'ParticipanteController@show');
 });
