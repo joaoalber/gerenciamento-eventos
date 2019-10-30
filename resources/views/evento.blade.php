@@ -57,7 +57,7 @@
                                     <td>{{ $evento->hora }}</td>
                                     <td>{{ $evento->local }}</td>
                                     <td>{{ $evento->descricao }}</td>
-                                    <td><div><a href="{{url('evento/presenca/'.$evento->id)}}" class="btn btn-primary">Go somewhere</a></div></td>
+                                    <td><div><a href="{{url('evento/presenca/'.$evento->id)}}" class="btn btn-primary">Participantes</a></div></td>
                                 </tr>
                                 @endforeach
                             </tbody>
