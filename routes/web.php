@@ -28,5 +28,3 @@ Route::prefix('participante')->group(function() {
     Route::put('/{evento_id}','ParticipanteController@update');
     Route::delete('/{evento_id}', 'ParticipanteController@destroy');
 });
-
-
