@@ -22,6 +22,7 @@ class CreateEventosTable extends Migration
             $table->time('hora');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

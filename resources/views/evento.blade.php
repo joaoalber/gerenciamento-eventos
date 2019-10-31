@@ -13,7 +13,7 @@
   @endsection
 
   @section('content')
-    <div class="card text-center position-static" style="margin:auto;width:85%;">
+    <div class="card text-center position-static" style="margin:auto;width:110%;">
         <div class="card-header">
             <h3>Eventos</h3>
         </div>
@@ -35,6 +35,7 @@
                                     <th scope="col">Local</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Participantes</th>
+                                    <th colspan="2">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,6 +47,15 @@
                                     <td>{{ $evento->local }}</td>
                                     <td>{{ $evento->descricao }}</td>
                                     <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adcionar</a></div></td>
+
+                                    <td><a href="{{url('evento/'.$evento->id.'/edit')}}" class="btn btn-warning ">Editar</a></td>
+                                    <td>
+                                        <form action="{{url('evento', [$evento->id])}}" method="POST">
+                                            {{method_field('DELETE')}}
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

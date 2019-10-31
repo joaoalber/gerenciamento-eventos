@@ -3,23 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Participante, Evento};
+use App\Evento;
+use App\Participante;
 use DB;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
 
 class EventoController extends Controller
 {
     public function index(){
-<<<<<<< HEAD
         $eventos = Evento::all();
-        return view('indexevento', compact('eventos'));
-=======
-        $eventos = Evento::paginate(5);
         return view('evento', compact('eventos'));
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
     }
 
     public function create(){
@@ -32,46 +24,56 @@ class EventoController extends Controller
     }
 
     public function store(Request $request){
-return $request;
-        // DB::beginTransaction();
-        // try {
+        DB::beginTransaction();
+        try {
+            
             $evento = Evento::create(
                 [
-                    'nome' => $request->nome,
-                    'data' => $request->data,
-                    'descricao' => $request->descricao,
-                    'local' => $request->local,
-                    'hora' => $request->hora
+                    'nome' => $request['evento']['nome'],
+                    'data' => $request['evento']['data'],
+                    'descricao' => $request['evento']['descricao'],
+                    'local' => $request['evento']['local'],
+                    'hora' => $request['evento']['hora']
                 ]
             );
-        //     DB::commit();
-        //     return redirect('/evento');
-        // } catch (\Exception $e) {
-        //     DB::rollback();
-        //     return redirect('/evento');
-        // }
+
+            DB::commit();
+            return redirect('/evento');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect('/evento');
+        }
     }
 
     public function edit($id){
         $evento = Evento::findOrFail($id);
-        return view('formevento', compact('evento'));
+        $data = [
+            'evento' => $evento,
+            'url' => 'evento/'.$id,
+            'method' => 'PUT'
+        ];
+
+        return View('formEvento',compact('data'));
     }
+
+
 
     public function update(Request $request, $id){
         $evento = Evento::findOrFail($id);
         $evento->update(
             [
-                'nome' => $request->nome,
-                'data' => $request->data,
-                'hora' => $request->hora,
-                'descricao' => $request->descricao,
-                'local' => $request->local
+                'nome' => $request['evento']['nome'],
+                'data' => $request['evento']['data'],
+                'hora' => $request['evento']['hora'],
+                'descricao' => $request['evento']['descricao'],
+                'local' => $request['evento']['local']
             ]
         );
-        //$evento->update($request->all());
+        
         return redirect('/evento');
     }
-    public function delete($id){
+
+    public function destroy($id){
         $evento = Evento::withTrashed()->findOrFail($id);
         if($evento->trashed()){
             $evento->restore();
@@ -81,13 +83,9 @@ return $request;
             return back()->with('success','Evento deletado com sucesso!');
         }
     }
-<<<<<<< HEAD
-=======
 
     public function listaPresenca($id) {
         $evento = Evento::findOrFail($id);
         return view('listapresenca', compact('evento'));
     }
-    
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
 }
