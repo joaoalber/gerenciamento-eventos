@@ -10,8 +10,8 @@ use DB;
 class EventoController extends Controller
 {
     public function index(){
-        $eventos = Evento::paginate(5);
-        return view('evento', compact('eventos'));
+        $eventos = Evento::all();
+        return view('indexevento', compact('eventos'));
     }
 
     public function create(){
@@ -72,10 +72,4 @@ class EventoController extends Controller
             return back()->with('success','Evento deletado com sucesso!');
         }
     }
-
-    public function listaPresenca($id) {
-        $evento = Evento::findOrFail($id);
-        return view('listapresenca', compact('evento'));
-    }
-    
 }
