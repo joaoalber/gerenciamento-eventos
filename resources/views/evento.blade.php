@@ -13,7 +13,7 @@
   @endsection
 
   @section('content')
-    <div class="card text-center position-static" style="margin:auto;width:85%;">
+    <div class="card text-center position-static" style="margin:auto;width:100%;">
         <div class="card-header">
             <h3>Eventos</h3>
         </div>
@@ -48,7 +48,7 @@
                                     <td>{{ $evento->descricao }}</td>
                                     <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adcionar</a></div></td>
 
-                                    <td> <button>Editar</button></td>
+                                    <td><a href="{{url('evento/'.$evento->id.'/edit')}}" class="btn btn-warning ">Editar</a></td>
                                     <td> <button>Atualizar</button></td>
                                 </tr>
                                 @endforeach

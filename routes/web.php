@@ -17,6 +17,7 @@ Route::prefix('evento')->group(function() {
     Route::get('/','EventoController@index');
     Route::get('/create','EventoController@create');
     Route::post('/','EventoController@store');
+    Route::get('{id}/edit', 'EventoController@edit');
     
     Route::get('/presenca/{evento_id}','EventoController@listaPresenca');
     

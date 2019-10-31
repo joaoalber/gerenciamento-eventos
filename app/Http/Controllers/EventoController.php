@@ -47,23 +47,32 @@ class EventoController extends Controller
 
     public function edit($id){
         $evento = Evento::findOrFail($id);
-        return view('formevento', compact('evento'));
+        $data = [
+            'evento' => $evento,
+            'url' => 'evento/'.$id,
+            'method' => 'PUT'
+        ];
+
+        return View('formEvento',compact('data'));
     }
+
+
 
     public function update(Request $request, $id){
         $evento = Evento::findOrFail($id);
         $evento->update(
             [
-                'nome' => $request->nome,
-                'data' => $request->data,
-                'hora' => $request->hora,
-                'descricao' => $request->descricao,
-                'local' => $request->local
+                'nome' => $request['evento']['nome'],
+                'data' => $request['evento']['data'],
+                'hora' => $request['evento']['hora'],
+                'descricao' => $request['evento']['descricao'],
+                'local' => $request['evento']['local']
             ]
         );
-        //$evento->update($request->all());
+        
         return redirect('/evento');
     }
+
     public function delete($id){
         $evento = Evento::withTrashed()->findOrFail($id);
         if($evento->trashed()){
