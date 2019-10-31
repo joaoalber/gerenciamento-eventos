@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>Evento: {{$eventos->nome}}</h3>
-    <h3>Data: {{$eventos->data}}</h3>
+    <h3>Evento: {{$evento->nome}}</h3>
+    <h3>Data: {{$evento->data}}</h3>
+
+    @foreach($evento->participante as $participante)
+        {{$participante->nome}}
+    @endforeach
 </body>
 </html>

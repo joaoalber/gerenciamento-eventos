@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastrar Participante</title>
-</head>
-<body>
+@extends('template')
+
+@section('content')
 
     @if($errors->any())
         @foreach($errors->all() as $error)
@@ -14,15 +8,30 @@
         @endforeach
     @endif
 
-    <h2>Cadastro de participante</h2>
+    <h2 class="text-center">Cadastro de participante</h2>
     
         <form id="form" method="POST" action="{{url(isset($participante) ? 'participante/update/'.$participante->id : 'participante/store')}}">
         {{csrf_field()}}
-            Nome: <input type="text" id="nome" name="nome" placeholder="Ex: Marcelo" min="3" value="{{old('nome', isset($participante) ? $participante->nome : '')}}"><br><br>
 
-            Rg: <input type="text" id="rg" name="rg"  maxlength="8" value="{{old('rg', isset($participante) ? $participante->rg : '')}}"><br><br>
+       
+        <div class="form-row">
+        
+       
+            <div class="form-group col-md-4">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Marcelo" min="3"  class="form-control" value="{{old('nome', isset($participante) ? $participante->nome : '')}}">
+            </div>
 
-            CPF: <input type="text" id="cpf" name="cpf" maxlength="11" value="{{old('cpf', isset($participante) ? $participante->cpf : '')}}"><br><br>
+            <div class="form-group col-md-4">
+                <label for="rg">RG</label> 
+                <input type="text" id="rg" name="rg"  maxlength="8" class="form-control" value="{{old('rg', isset($participante) ? $participante->rg : '')}}">
+            </div>
+
+            </div class="form-group col-md-4 bg-dark">
+                  <input type="text" class="form-control">
+            </div> 
+        </div>
+       
 
             Email: <input type="email" id="email" name="email" value="{{old('email', isset($participante) ? $participante->email : '')}}"><br><br>
 
@@ -32,7 +41,6 @@
 
             Organização: <input type="text" id="organizacao" name="organizacao" value="{{old('organizacao', isset($participante) ? $participante->organizacao : '')}}"><br><br>
 
-            <button type="submit">Salvar</button>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </form>
-</body>
-</html>
+@endsection

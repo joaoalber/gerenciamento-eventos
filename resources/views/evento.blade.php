@@ -1,5 +1,17 @@
   @extends('template')
 
+  @section('title')
+    Eventos
+  @endsection
+
+  @section('css')
+    <style>
+        #teste #first{
+            margin-right: 2rem;
+        }
+    </style>
+  @endsection
+
   @section('content')
     <div class="card text-center position-static" style="margin:auto;width:85%;">
         <div class="card-header">
@@ -22,17 +34,20 @@
                                     <th scope="col">Hora</th>
                                     <th scope="col">Local</th>
                                     <th scope="col">Descrição</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Participantes</th>
                                 </tr>
                             </thead>
-                            <tbody><tr id="teste"></td> 
-                                    <td>testesss</td>
-                                    <td>testesss</td>
-                                    <td>testesss</td>
-                                    <td>testesss</td>
-                                    <td>testesss</td>
-                                    <td><div><a href="evento/presenca/1" class="btn btn-primary">Participantes</a></div></td>
+                            <tbody>
+                                @foreach($eventos as $evento)
+                                <tr id="teste"></td> 
+                                    <td>{{ $evento->nome }}</td>
+                                    <td>{{ $evento->data }}</td>
+                                    <td>{{ $evento->hora }}</td>
+                                    <td>{{ $evento->local }}</td>
+                                    <td>{{ $evento->descricao }}</td>
+                                    <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adcionar</a></div></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -55,7 +70,6 @@
                     </li>
                 </ul>
             </nav>
-            <div class="text-right" ><a href="#" class="btn btn-primary">Go somewhere</a></div>
         </div>
     </div>
 @endsection
