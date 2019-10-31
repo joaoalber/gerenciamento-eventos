@@ -18,10 +18,11 @@ Route::prefix('evento')->group(function() {
     Route::get('/create','EventoController@create');
     Route::post('/','EventoController@store');
     Route::get('{id}/edit', 'EventoController@edit');
-    
+    Route::put('{id}','EventoController@update');
+
     Route::get('/presenca/{evento_id}','EventoController@listaPresenca');
     
-    Route::put('/{evento_id}','EventoController@update'); //Salvar alteracao
+     //Salvar alteracao
     Route::delete('/{evento_id}', 'EventoController@destroy');//Deletar pedido
 });
 

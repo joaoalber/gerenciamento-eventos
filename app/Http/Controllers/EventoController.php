@@ -73,7 +73,7 @@ class EventoController extends Controller
         return redirect('/evento');
     }
 
-    public function delete($id){
+    public function destroy($id){
         $evento = Evento::withTrashed()->findOrFail($id);
         if($evento->trashed()){
             $evento->restore();
