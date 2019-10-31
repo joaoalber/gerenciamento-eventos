@@ -1,17 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Evento: {{$evento->nome}}</h3>
-    <h3>Data: {{$evento->data}}</h3>
+@extends('template')
 
-    @foreach($evento->participante as $participante)
-        {{$participante->nome}}
-    @endforeach
-</body>
-</html>
+@section('title')
+  Participantes
+@endsection
+
+@section('css')
+
+<style>
+      #teste #first{
+          margin-right: 2rem;
+      }
+  </style>
+@endsection
+@section('content')
+    <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
+        <div class="card col-9">
+            <div class="card-header text-center">Participantes</div>
+                <div class="card-body">
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    
+                                </div>       
+                        </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Gerar PDF</button>
+                    </div>
+    </div>
+
+@endsection
