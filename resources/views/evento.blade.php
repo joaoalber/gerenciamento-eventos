@@ -31,7 +31,7 @@
                                     <td>testesss</td>
                                     <td>testesss</td>
                                     <td>testesss</td>
-                                    <td><div><a href="evento/presenca/1" class="btn btn-primary">Participantes</a></div></td>
+                                    <td><div><a href="{{url('evento/presenca/1')}}" class="btn btn-primary">Participantes</a></div></td>
                                 </tr>
                             </tbody>
                         </table>

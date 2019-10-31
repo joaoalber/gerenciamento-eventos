@@ -6,13 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        #menu li{
+            display: inline;
+        }
+        #menu li h5{
+            display: inline;
+        }
+    </style>
 </head>
 <body>
     <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
+        <div class="collapse navbar-collapse navbar-expand-lg" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
-                <h5 class="text-white h4">Teste BRAND</h5>
-                <span class="text-muted">navbar</span>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu">
+                        <li class="nav-item">
+                            <h5 class="text-white h4">Teste BRAND</h5>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
