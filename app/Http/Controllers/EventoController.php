@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{Participante, Evento};
+use DB;
 
 
 class EventoController extends Controller
@@ -13,9 +14,11 @@ class EventoController extends Controller
         // return view('evento', compact('eventos'));
         return view('evento');
     }
+
     public function create(){
-        return view('formevento');
+        return view('formEvento');
     }
+
     public function store(Request $request){
         $evento = Evento::create(
             [
@@ -28,10 +31,12 @@ class EventoController extends Controller
         );
         return redirect('/evento');
     }
+
     public function edit($id){
         $evento = Evento::findOrFail($id);
         return view('formevento', compact('evento'));
     }
+
     public function update(Request $request, $id){
         $evento = Evento::findOrFail($id);
         $evento->update(
@@ -56,8 +61,11 @@ class EventoController extends Controller
             return back()->with('success','Evento deletado com sucesso!');
         }
     }
-    public function listaPresenca(){
-        $eventos = Evento::all();
-        return view('listapresenca', compact('eventos'));
+
+    public function listaPresenca() {
+        $evento = Evento::findOrFail(1);
+        return ($evento);
+        return view('listapresenca', compact('evento'));
     }
+    
 }
