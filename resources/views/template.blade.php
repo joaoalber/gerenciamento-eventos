@@ -9,14 +9,29 @@
     <style>
         #menu li{
             display: inline;
+
+        }
+        #menu li a{
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: #111;
         }
         #menu li h5{
-            display: inline;
+            padding: 14px 16px;
+            display: block;
+            text-align: center;
+            margin-right: 3rem;
         }
     </style>
+    @yield('css')
 </head>
 <body>
-    <div class="pos-f-t">
+    <div class="pos-f-l">
         <div class="collapse navbar-collapse navbar-expand-lg" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu">
@@ -24,13 +39,13 @@
                             <h5 class="text-white h4">Teste BRAND</h5>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{url('evento')}}">Eventos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="{{url('participante')}}">Participantes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link disabled" href="{{url('/')}}" tabindex="-1" aria-disabled="true">Início</a>
                         </li>
                     </ul>
             </div>
