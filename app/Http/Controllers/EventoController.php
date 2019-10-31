@@ -26,15 +26,17 @@ class EventoController extends Controller
     public function store(Request $request){
         DB::beginTransaction();
         try {
+            
             $evento = Evento::create(
                 [
-                    'nome' => $request->nome,
-                    'data' => '12-02-1992',
-                    'descricao' => $request->descricao,
-                    'local' => $request->local,
-                    'hora' => $request->hora
+                    'nome' => $request['evento']['nome'],
+                    'data' => $request['evento']['data'],
+                    'descricao' => $request['evento']['descricao'],
+                    'local' => $request['evento']['local'],
+                    'hora' => $request['evento']['hora']
                 ]
             );
+
             DB::commit();
             return redirect('/evento');
         } catch (\Exception $e) {

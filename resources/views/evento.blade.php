@@ -35,6 +35,7 @@
                                     <th scope="col">Local</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Participantes</th>
+                                    <th colspan="2">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,6 +47,9 @@
                                     <td>{{ $evento->local }}</td>
                                     <td>{{ $evento->descricao }}</td>
                                     <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adcionar</a></div></td>
+
+                                    <td> <button>Editar</button></td>
+                                    <td> <button>Atualizar</button></td>
                                 </tr>
                                 @endforeach
                             </tbody>
