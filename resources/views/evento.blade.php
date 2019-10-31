@@ -1,5 +1,9 @@
   @extends('template')
 
+  @section('title')
+    Eventos
+  @endsection
+
   @section('css')
     <style>
         #teste #first{
@@ -41,7 +45,7 @@
                                     <td>{{ $evento->hora }}</td>
                                     <td>{{ $evento->local }}</td>
                                     <td>{{ $evento->descricao }}</td>
-                                    <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-primary">Adcionar</a></div></td>
+                                    <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adcionar</a></div></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -66,7 +70,6 @@
                     </li>
                 </ul>
             </nav>
-            <div class="text-right" ><a href="#" class="btn btn-primary">Go somewhere</a></div>
         </div>
     </div>
 @endsection
