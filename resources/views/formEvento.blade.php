@@ -22,46 +22,56 @@
     </nav>
     </div>
 
- <div class="card col-8">
-     <div class="card-body">
-     <div class="card-header d-flex justify-content-center">Cadastro de Eventos</div>
-     <form action="">
+    <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
+        <div class="card col-9">
+            <div class="card-header text-center">Cadastro de Eventos</div>
+                <div class="card-body">
+                    <form method="POST" action="{{url($data['url'])}}">
+                    @if($data['method'] == 'PUT')
+                        @method('PUT')
+                    @endif
+                    @csrf
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="">Nome</label>
+                                    <input type="text"  value="{{old('evento.nome', $data['evento'] ? $data['evento']->nome : '')}}" name="evento[nome]" class="form-control">
+                                </div>
 
-        <div class="form-row">
-            <div class="form-group col-6">
-                <label for="">Nome</label>
-                <input type="text" class="form-control">
-            </div>
+                            <div class="form-group col-md-3">
+                                <label for="">Data do Evento</label>
+                                <input type="date" value="{{old('evento.data', $data['evento'] ? $data['evento']->data : '')}}" name="evento[data]" class="form-control">
+                            </div>
 
-            <div class="form-group col-3">
-                <label for="">Data do Evento</label>
-                <input type="date" class="form-control">
-            </div>
+                            <div class="form-group col-md-6">
+                                <label for="">Descrição</label>
+                                <input type="text" value="{{old('evento.descricao', $data['evento'] ? $data['evento']->descricao : '')}}" name="evento[descricao]" class="form-control">
+                            </div>
 
-            <div class="form-group col-2">
-                <label for="">Hora do Evento</label>
-                <input type="text" class="form-control">
-            </div>
+                            <div class="form-group col-md-5">
+                                <label for="">Local:</label>
+                                <input type="text" value="{{old('evento.local', $data['evento'] ? $data['evento']->local : '')}}" name="evento[local]" class="form-control">
+                            </div>
 
-
-            <div class="form-group col-6">
-                <label for="">Descrição</label>
-                <input type="text"  class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="">Local:</label>
-                <input type="text" class="form-control">
-            </div>
-            <!-- todo o formulario -->
-        </div>
-     </form>
+                            <div class="form-group col-md-2">
+                                <label for="">Hora do Evento</label>
+                                <input type="time" value="{{old('evento.hora', $data['evento'] ? $data['evento']->hora : '')}}" name="evento[hora]" class="form-control">
+                            </div>
+                            <!-- todo o formulario -->
+                        </div>
+                   
+                </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
+         </div>
     </div>
-</div>
 
+ </div>
     <nav class="navbar fixed-bottom navbar-dark bg-dark">
         <a class=" mx-auto navbar-brand" href="#">IFSP@2019</a>
     </nav>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

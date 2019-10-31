@@ -4,31 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{Participante, Evento};
-
+use DB;
 
 class EventoController extends Controller
 {
     public function index(){
-        // $eventos = Evento::paginate(5);
-        // return view('evento', compact('eventos'));
-        return view('evento');
+        $eventos = Evento::all();
+        return view('indexevento', compact('eventos'));
     }
 
     public function create(){
-        return view('formEvento');
+        $data = [
+            'evento' => '',
+            'url' => 'evento',
+            'method' => 'post'
+        ];
+        return view('formEvento',compact('data'));
     }
 
     public function store(Request $request){
-        $evento = Evento::create(
-            [
-                'nome' => $request->nome,
-                'data' => $request->data,
-                'hora' => $request->hora,
-                'descricao' => $request->descricao,
-                'local' => $request->local
-            ]
-        );
-        return redirect('/evento');
+return $request;
+        // DB::beginTransaction();
+        // try {
+            $evento = Evento::create(
+                [
+                    'nome' => $request->nome,
+                    'data' => $request->data,
+                    'descricao' => $request->descricao,
+                    'local' => $request->local,
+                    'hora' => $request->hora
+                ]
+            );
+        //     DB::commit();
+        //     return redirect('/evento');
+        // } catch (\Exception $e) {
+        //     DB::rollback();
+        //     return redirect('/evento');
+        // }
     }
 
     public function edit($id){
@@ -59,9 +71,5 @@ class EventoController extends Controller
             $evento->delete();
             return back()->with('success','Evento deletado com sucesso!');
         }
-    }
-    public function listaPresenca(){
-        $eventos = Evento::all();
-        return view('listapresenca', compact('eventos'));
     }
 }
