@@ -5,21 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\{Participante, Evento};
 use DB;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
 
 class EventoController extends Controller
 {
     public function index(){
-<<<<<<< HEAD
         $eventos = Evento::all();
         return view('indexevento', compact('eventos'));
-=======
-        $eventos = Evento::paginate(5);
-        return view('evento', compact('eventos'));
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
     }
 
     public function create(){
@@ -81,13 +72,4 @@ return $request;
             return back()->with('success','Evento deletado com sucesso!');
         }
     }
-<<<<<<< HEAD
-=======
-
-    public function listaPresenca($id) {
-        $evento = Evento::findOrFail($id);
-        return view('listapresenca', compact('evento'));
-    }
-    
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
 }
