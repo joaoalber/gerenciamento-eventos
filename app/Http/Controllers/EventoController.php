@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{Participante, Evento};
+use DB;
 
 
 class EventoController extends Controller
@@ -56,8 +57,11 @@ class EventoController extends Controller
             return back()->with('success','Evento deletado com sucesso!');
         }
     }
-    public function listaPresenca(){
-        $eventos = Evento::all();
-        return view('listapresenca', compact('eventos'));
+
+    public function listaPresenca() {
+        $evento = Evento::findOrFail(1);
+        return ($evento);
+        return view('listapresenca', compact('evento'));
     }
+    
 }
