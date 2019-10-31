@@ -30,4 +30,5 @@ Route::prefix('participante')->group(function() {
     Route::post('update/{participante}', 'ParticipanteController@update');
     Route::get('delete/{participante}', 'ParticipanteController@destroy');
     Route::get('show/{participante}', 'ParticipanteController@show');
+    Route::get('cracha/{participante}/{evento}','CrachaController@index');
 });
