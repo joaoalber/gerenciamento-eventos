@@ -14,9 +14,11 @@ class EventoController extends Controller
         // return view('evento', compact('eventos'));
         return view('evento');
     }
+
     public function create(){
-        return view('formevento');
+        return view('formEvento');
     }
+
     public function store(Request $request){
         $evento = Evento::create(
             [
@@ -29,10 +31,12 @@ class EventoController extends Controller
         );
         return redirect('/evento');
     }
+
     public function edit($id){
         $evento = Evento::findOrFail($id);
         return view('formevento', compact('evento'));
     }
+
     public function update(Request $request, $id){
         $evento = Evento::findOrFail($id);
         $evento->update(
