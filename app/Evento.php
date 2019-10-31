@@ -10,7 +10,7 @@ class Evento extends Model
     protected $fillable = ['nome','data','descricao','local','hora'];
     use SoftDeletes;
     public function participante(){
-        return $this->belongsToMany('App\Participante', 'participantes_eventos', 'participante_id', 'evento_id');
+        return $this->belongsToMany('App\Participante', 'participantes_eventos', 'evento_id', 'participante_id');
     }
     
 }
