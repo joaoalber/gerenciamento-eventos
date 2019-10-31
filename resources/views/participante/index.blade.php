@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Participante</title>
-</head>
-<body>
-    <h2>Listagem de participantes</h2>
+@extends('template')
 
-    <table class="table">
-        <thead>
+@section('content')
+    <div class="row">
+        <h2 class="text-center">Listagem de participantes</h2>
+        <a class="btn btn-primary text-end" href="{{url('participante/create')}}">Criar participante</a>
+    </div>
+
+    
+    
+    
+    <table class="table table-hover text-center">
+        <thead class="thead-dark">
             <th>Nome</th>
             <th>Email</th>
             <th>Telefone</th>
@@ -33,6 +33,5 @@
         </tbody>
     <table>
     @endif
-   <a href="{{url('participante/create')}}">Criar participante</a>
-</body>
-</html>
+   
+@endsection
