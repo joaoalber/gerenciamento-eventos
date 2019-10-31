@@ -10,12 +10,10 @@
 </head>
 <body style="background-color:#3b3b3b">
 <div class="container">
-    <div class="card mx-auto mt-5 col-8" style="height: 500px;">
+    <div class="card border-primary mx-auto mt-5 col-8" style="height: 500px; background-color:#eaf7fc">
         <div class="card-header">
-            <div class="form-group mb-3">
                 <input type="text" readonly class="form-control-plaintext" id="nome" value="{{old('nome', isset($evento) ? $evento->nome : '')}}" style="text-align:center;font-size:2.5em;font-weight: bold;">
-                </div>
-        </div>
+            </div>
         <div class="card-body mt-5 col justify-content-md-center">
             <div class="form-group mb-3">
                 <div class="form-group row justify-content-center">
@@ -29,7 +27,7 @@
                     </div>
                 </div>
 
-            <div class="card align-items-center justify-content-center h-25">
+            <div class="card border-secondary align-items-center justify-content-center h-25" style="background-color:#c5e0ea">
                 <div class="col row">
                     <input type="text" readonly class="form-control-plaintext" id="nome" value="{{old('nome', isset($participante) ? $participante->nome : '')}}" style="text-align:center;font-size:2.5em;font-weight: bold;">
                     </div>
