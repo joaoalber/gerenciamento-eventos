@@ -61,9 +61,8 @@ class EventoController extends Controller
         }
     }
 
-    public function listaPresenca() {
-        $evento = Evento::findOrFail(1);
-        return ($evento);
+    public function listaPresenca($id) {
+        $evento = Evento::findOrFail($id);
         return view('listapresenca', compact('evento'));
     }
     
