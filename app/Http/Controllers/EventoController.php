@@ -3,23 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Participante, Evento};
+use App\Evento;
+use App\Participante;
 use DB;
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
 
 class EventoController extends Controller
 {
     public function index(){
-<<<<<<< HEAD
-        $eventos = Evento::all();
-        return view('indexevento', compact('eventos'));
-=======
         $eventos = Evento::paginate(5);
         return view('evento', compact('eventos'));
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
     }
 
     public function create(){
@@ -32,24 +24,23 @@ class EventoController extends Controller
     }
 
     public function store(Request $request){
-return $request;
-        // DB::beginTransaction();
-        // try {
+        DB::beginTransaction();
+        try {
             $evento = Evento::create(
                 [
                     'nome' => $request->nome,
-                    'data' => $request->data,
+                    'data' => '12-02-1992',
                     'descricao' => $request->descricao,
                     'local' => $request->local,
                     'hora' => $request->hora
                 ]
             );
-        //     DB::commit();
-        //     return redirect('/evento');
-        // } catch (\Exception $e) {
-        //     DB::rollback();
-        //     return redirect('/evento');
-        // }
+            DB::commit();
+            return redirect('/evento');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect('/evento');
+        }
     }
 
     public function edit($id){
@@ -81,13 +72,10 @@ return $request;
             return back()->with('success','Evento deletado com sucesso!');
         }
     }
-<<<<<<< HEAD
-=======
 
     public function listaPresenca($id) {
         $evento = Evento::findOrFail($id);
         return view('listapresenca', compact('evento'));
     }
     
->>>>>>> 2a74b32b5c42e8f7ce1aa0825785f074ee03e043
 }
