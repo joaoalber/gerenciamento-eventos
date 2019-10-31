@@ -11,7 +11,7 @@ class EventoController extends Controller
 {
     public function index(){
         $eventos = Evento::all();
-        return view('indexevento', compact('eventos'));
+        return view('evento', compact('eventos'));
     }
 
     public function create(){
