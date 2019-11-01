@@ -20,7 +20,9 @@
 
                         <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    
+                                    @foreach($evento->participante as $participantes)
+                                        {{$participantes->nome}}
+                                    @endforeach
                                 </div>       
                         </div>
 
@@ -29,7 +31,7 @@
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Gerar PDF</button>
+                        <button type="submit" class="btn btn-primary">Imprimir</button>
                     </div>
     </div>
 

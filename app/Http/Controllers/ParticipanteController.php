@@ -15,16 +15,20 @@ class ParticipanteController extends Controller
     }
 
     public function create(){
-        return view('participante.form');
+        $eventos = Evento::all(['id', 'nome']);
+        return view('participante.form', compact('eventos'));
     }
 
     public function store(CreateParticipante $request){
-     
+
         DB::beginTransaction();
+        
         
         try {
             $participante = Participante::create($request->all());
             DB::commit();
+            $evento = Evento::find($request->eventos);
+            $participante->evento()->attach($evento);
             return redirect('/participante')->with('success', 'participante cadastrado com sucesso.');
         } catch(Exception $e){
             DB::rollback();
