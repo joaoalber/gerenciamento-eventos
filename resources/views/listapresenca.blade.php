@@ -20,7 +20,9 @@
 
                         <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    
+                                    @foreach($evento->participante as $participantes)
+                                        {{$participantes->nome}}
+                                    @endforeach
                                 </div>       
                         </div>
 
