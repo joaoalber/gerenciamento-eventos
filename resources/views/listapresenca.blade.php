@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="card-footer d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Gerar PDF</button>
+                        <button type="submit" class="btn btn-primary">Imprimir</button>
                     </div>
     </div>
 
