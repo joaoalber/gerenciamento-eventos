@@ -42,8 +42,8 @@
                                 @foreach($eventos as $evento)
                                 <tr id="teste"></td> 
                                     <td>{{ $evento->nome }}</td>
-                                    <td>{{ $evento->data }}</td>
-                                    <td>{{ $evento->hora }}</td>
+                                    <td>{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
                                     <td>{{ $evento->local }}</td>
                                     <td>{{ $evento->descricao }}</td>
                                     <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adcionar</a></div></td>
