@@ -25,7 +25,7 @@
                     <td>{{$participante->email}}</td>
                     <td>{{$participante->telefone}}</td>
                     <td>{{$participante->organizacao}}</td>
-                    <td><a class="btn btn-primary" href='{{url("participante/show/$participante->id")}}'>Ficha</a></td>
+                    <td><a class="btn btn-info" href='{{url("participante/show/$participante->id")}}'>Ficha</a></td>
                     <td><a class="btn btn-secondary" href='{{url("participante/edit/$participante->id")}}'>Atualizar</a></td>
                     <td><a class="btn btn-danger" href='{{url("participante/delete/$participante->id")}}'>Deletar</a></td>
                 <tr>
