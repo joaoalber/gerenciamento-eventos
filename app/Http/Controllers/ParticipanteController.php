@@ -28,7 +28,7 @@ class ParticipanteController extends Controller
             $participante = Participante::create($request->all());
             DB::commit();
             $evento = Evento::find($request->eventos);
-            $participante->evento()->attach($evento);;
+            $participante->evento()->attach($evento);
             return redirect('/participante')->with('success', 'participante cadastrado com sucesso.');
         } catch(Exception $e){
             DB::rollback();
