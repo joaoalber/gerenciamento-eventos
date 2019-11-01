@@ -13,7 +13,7 @@
     <div class="ficha">
         <div class="card" style="width: 30rem;">
     
-            <div class="card-body text-center" style="background-color: #DCDCDC;">
+            <div class="card-body text-center">
                 <h1 class="card-title">Ficha do Participante</h1>
             </div>
 
@@ -35,10 +35,5 @@
         </div>
         
     </div>
-
-    <script>
-        alert('oi')
     
-   
-    </script>
 @endsection

@@ -11,7 +11,7 @@
         <form id="form" method="POST" action="{{url(isset($participante) ? 'participante/update/'.$participante->id : 'participante/store')}}">
         {{csrf_field()}}
             <div class="card text-center">
-                <div class="card header" style="background-color: #DCDCDC;">
+                <div class="card header">
                     <h2>Cadastro de Participante</h2>
                 </div>
 
@@ -28,14 +28,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="material-icons">perm_identity</i></span>
                             </div>
-                            <input required type="text" id="rg" name="rg"  maxlength="8" class="form-control" placeholder="RG" value="{{old('rg', isset($participante) ? $participante->rg : '')}}">
+                            <input required type="text" id="rg" name="rg"  maxlength="12" class="form-control" placeholder="RG" value="{{old('rg', isset($participante) ? $participante->rg : '')}}">
                         </div>
 
                         <div class="input-group col-sm-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="material-icons">picture_in_picture</i></span>
                             </div>
-                            <input required type="text" id="cpf" name="cpf"  maxlength="11" class="form-control" placeholder="CPF" value="{{old('cpf', isset($participante) ? $participante->cpf : '')}}">
+                            <input required type="text" id="cpf" name="cpf"  maxlength="14" class="form-control" placeholder="CPF" value="{{old('cpf', isset($participante) ? $participante->cpf : '')}}">
                         </div>
                     </div>
 
@@ -51,7 +51,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="material-icons">phone</i></span>
                             </div>
-                            <input required type="text" id="telefone" name="telefone" maxlength="9" class="form-control" placeholder="Telefone" value="{{old('telefone', isset($participante) ? $participante->telefone : '')}}">
+                            <input  required type="text" id="telefone" name="telefone"  class="form-control" placeholder="Telefone" value="{{old('telefone', isset($participante) ? $participante->telefone : '')}}">
                         </div>
 
                         <div class="input-group col-sm-4">
@@ -75,5 +75,28 @@
                     <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
+
+            <script>
+                  $(document).ready(function () { 
+                    var $cpf = $("#cpf");
+                    $cpf.mask('000.000.000-00', {reverse: true});
+
+                    $("#telefone").mask(behavior);
+                    
+                    var $rg = $("#rg");
+                    $rg.mask('00.000.000-0');
+
+                 });
+
+                 var behavior = function (val) {
+                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                },
+
+                options = {
+                    onKeyPress: function (val, e, field, options) {
+                        field.mask(behavior.apply({}, arguments), options);
+                    }
+                };
+            </script>
         </form>
 @endsection

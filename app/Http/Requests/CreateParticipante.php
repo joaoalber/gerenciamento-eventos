@@ -26,10 +26,10 @@ class CreateParticipante extends FormRequest
     {
         return [
             'nome'             => 'required|string',
-            'rg'               => 'required|numeric',
-            'cpf'              => 'required|numeric',
+            'rg'               => 'required',
+            'cpf'              => 'required',
             'email'            => 'required|email|unique:participante,email'.$this->route('id'),
-            'telefone'         => 'required|numeric',
+            'telefone'         => 'required',
             'data_nascimento'  => 'required|date',
             'organizacao'      => 'required|string'
         ];
