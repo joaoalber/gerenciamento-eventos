@@ -6,11 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+    <script>
+            window.onload = function (){
+                JsBarcode('#codBarras', "{{old('cpf', isset($participante) ? $participante->cpf : '0')}}", {
+                                height:"60",
+                                width:"2",
+                                text: "{{old('nome', isset($participante) ? $participante->nome : '.')}}",
+                                fontOptions: "italic",
+                                textPosition: "top",
+                                fontSize: 0 //Sumir com o texto!
+                            });
+            }
+        </script>
     <title>Cracha</title>
 </head>
 <body style="background-color:#3b3b3b">
 <div class="container">
-    <div class="card border-primary mx-auto mt-5 col-8" style="height: 500px; background-color:#eaf7fc">
+    <div class="card border-primary mx-auto mt-5 col-8" style="height: 500px; background-color:#eaf7fc" onclick="window.print()">
         <div class="card-header">
                 <input type="text" readonly class="form-control-plaintext" id="nome" value="{{old('nome', isset($evento) ? $evento->nome : '')}}" style="text-align:center;font-size:2.5em;font-weight: bold;">
             </div>
@@ -18,11 +31,11 @@
             <div class="form-group mb-3">
                 <div class="form-group row justify-content-center">
                     <div class="col ml-2 mr-1">
-                        <input type="text" readonly class="form-control-plaintext" id="email" value="{{old('nome', isset($participante) ? $participante->email : '')}}" style="text-align:center;font-size:1.15em;">
+                        <input type="text" readonly class="form-control-plaintext" id="email" value="{{old('email', isset($participante) ? $participante->email : '')}}" style="text-align:center;font-size:1.15em;">
                         </div>
 
                     <div class="col ml-1 mr-2">
-                        <input type="text" readonly class="form-control-plaintext" id="organizacao" value="{{old('nome', isset($participante) ? $participante->organizacao : '')}}" style="text-align:center;font-size:1.15em;">
+                        <input type="text" readonly class="form-control-plaintext" id="organizacao" value="{{old('organizacao', isset($participante) ? $participante->organizacao : '')}}" style="text-align:center;font-size:1.15em;">
                         </div>
                     </div>
                 </div>
@@ -31,6 +44,10 @@
                 <div class="col row">
                     <input type="text" readonly class="form-control-plaintext" id="nome" value="{{old('nome', isset($participante) ? $participante->nome : '')}}" style="text-align:center;font-size:2.5em;font-weight: bold;">
                     </div>
+                </div>
+            
+            <div class="form-group row justify-content-center mt-5">
+                    <svg id="codBarras"></svg>
                 </div>
             </div>
         </div>
