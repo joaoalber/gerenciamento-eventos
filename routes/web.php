@@ -19,7 +19,8 @@ Route::prefix('evento')->group(function() {
     Route::post('/','EventoController@store');
     Route::get('{id}/edit', 'EventoController@edit');
     Route::put('{id}','EventoController@update');
-
+    Route::get('/adicionaparticipante/{id}','EventoController@adicionaParticipante'); //adiciona participante
+    Route::post('/salva','EventoController@salvaParticipante'); //salva participante
     Route::get('/presenca/{evento_id}','EventoController@listaPresenca');
     
      //Salvar alteracao

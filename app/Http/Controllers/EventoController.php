@@ -88,4 +88,20 @@ class EventoController extends Controller
         $evento = Evento::findOrFail($id);
         return view('listapresenca', compact('evento'));
     }
+
+
+    public function AdicionaParticipante($id){
+        $participantes = Participante::all();
+        $data = [
+            'evento_id' => $id
+        ];
+
+        return view('adiciona',compact('data','participantes'));
+    }
+
+    public function salvaParticipante(Request $request){
+        $evento = $request['evento_id'];
+        $participantes = $request['participantes'];
+        return $request;
+    }
 }

@@ -46,7 +46,7 @@
                                     <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
                                     <td>{{ $evento->local }}</td>
                                     <td>{{ $evento->descricao }}</td>
-                                    <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="#" class="btn btn-success">Adicionar</a></div></td>
+                                    <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-primary">Listar</a><a href="{{'evento/adicionaparticipante/'.$evento->id}}" class="btn btn-success">Adicionar</a></div></td>
 
                                     <td><a href="{{url('evento/'.$evento->id.'/edit')}}" class="btn btn-warning ">Editar</a></td>
                                     <td>
