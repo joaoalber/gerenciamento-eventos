@@ -18,7 +18,7 @@
         <input type="hidden" name="evento_id" value="{{$data['evento_id']}}">
         @foreach($participantes as $participante)
             <div>
-               <input type="checkbox" name="participantes" value="{{$participante->id}}">
+               <input type="checkbox" name="participantes[]" value="{{$participante->id}}">
                <label for="scales">{{$participante->id}}</label>
             </div>
 
