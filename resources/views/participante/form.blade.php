@@ -67,13 +67,15 @@
                                 </div>
                                 <input required type="text" id="organizacao" name="organizacao" class="form-control" placeholder="Organização" value="{{old('organizacao', isset($participante) ? $participante->organizacao : '')}}">
                         </div>
+
                         <div class="input-group col mt-3 mb-2">
-                        
-                    
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="material-icons">event</i></span>
+                            </div>
                             <select class="form-control" name="eventos">
                                 <option value="">Escolha o evento</option>
                                 @foreach($eventos as $evento)
-                                    <option value="{{$evento->id}}">{{$evento->nome}}</option>
+                                    <option value="{{old($evento->id, isset($evento->id) ? 'selected' : '')}}">{{$evento->nome}}</option>
                                 @endforeach
                             </select>
                             
