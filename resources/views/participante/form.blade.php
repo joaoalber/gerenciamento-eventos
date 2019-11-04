@@ -74,15 +74,22 @@
                             </div>
                             <select class="form-control" name="eventos">
                                 <option value="">Escolha o evento</option>
+                                <!-- (Flávio) Desculpa mexer na sua parte sem autorização, mas eu precisei corrigir isso aqui pra realizar os testes. O cadastro do participante no evento está funcionando e a lista de valores agora volta com o evento cadastrado já selecionado. Uma sugestão: Eu acho que a gente deveria só deixar ser cadastro um evento quando o participante estiver sendo cadastrado pra evitar erros.-->
                                 @foreach($eventos as $evento)
-                                    <option value="{{old($evento->id, isset($evento->id) ? 'selected' : '')}}">{{$evento->nome}}</option>
+                                    <option value="{{$evento->id}}" 
+                                        <?php 
+                                            if(isset($evento_participante)){
+                                                if($evento_participante->pivot->evento_id == $evento->id){
+                                                   echo 'selected';
+                                                }
+                                            }
+                                        ?>
+                                    >{{$evento->nome}}</option>
                                 @endforeach
                             </select>
-                            
                         </div>
                     </div>
                 </div>
-
                 <div class="card-footer text-right">
                     <a class="btn btn-primary " href="{{url('participante')}}">Voltar</a>
                     <button type="submit" class="btn btn-success">Salvar</button>

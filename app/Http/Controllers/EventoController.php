@@ -52,7 +52,7 @@ class EventoController extends Controller
             'url' => 'evento/'.$id,
             'method' => 'PUT'
         ];
-
+        
         return View('formEvento',compact('data'));
     }
 
@@ -92,16 +92,30 @@ class EventoController extends Controller
 
     public function AdicionaParticipante($id){
         $participantes = Participante::all();
+        $evento = Evento::findOrFail($id);
         $data = [
             'evento_id' => $id
         ];
-
-        return view('adiciona',compact('data','participantes'));
+        $evento_participante = $evento->participante()->get();
+        // return($evento_participante);
+        return view('adiciona',compact('data','participantes', 'evento_participante'));
     }
 
     public function salvaParticipante(Request $request){
-        $evento = $request['evento_id'];
-        $participantes = $request['participantes'];
-        return $request;
+        // $evento = $request['evento_id'];
+        // $participantes = $request['participantes'];
+        // return $request;
+        //(Flávio) Participantes cadastrados e retirados com sucesso!
+        DB::beginTransaction();
+        try {
+            $evento = Evento::findOrFail($request['evento_id']);
+            $evento->participante()->detach();
+            $evento->participante()->attach($request['participantes']);
+            DB::commit();
+            return redirect('/evento')->with('success','Participantes cadastrados com sucesso!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect('/evento')->with('error','Erro ao cadastrar participantes!');
+        }
     }
 }

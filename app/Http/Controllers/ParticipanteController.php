@@ -21,14 +21,15 @@ class ParticipanteController extends Controller
 
     public function store(CreateParticipante $request){
 
+        return ($request);
         DB::beginTransaction();
         
         
         try {
             $participante = Participante::create($request->all());
-            DB::commit();
             $evento = Evento::find($request->eventos);
             $participante->evento()->attach($evento);
+            DB::commit();
             return redirect('/participante')->with('success', 'participante cadastrado com sucesso.');
         } catch(Exception $e){
             DB::rollback();
@@ -40,7 +41,9 @@ class ParticipanteController extends Controller
     public function edit($id){
         $participante = Participante::findOrFail($id);
         $eventos = Evento::all(['id', 'nome']);
-        return view('participante.form', compact('participante', 'eventos'));
+        $evento_participante = $participante->evento()->first();
+        // return($evento_participante->pivot->evento_id);
+        return view('participante.form', compact('participante', 'eventos', 'evento_participante'));
     }
 
     public function update(CreateParticipante $request, $id){
@@ -49,6 +52,8 @@ class ParticipanteController extends Controller
         try {
             $participante = Participante::findOrFail($id);
             $participante->update($request->all());
+            $participante->evento()->detach(); //(Flávio) Correção futura: Cadastrar eventos através da página do participante faz com que o participante possa ter o mesmo evento cadastrado várias vezes! O detach apaga todas as ligações entre participante e evento e cadastra de novo esse novo. Isso é um concerto temporário...
+            $participante->evento()->attach($request->eventos);
             DB::commit();
             return redirect('/participante')->with('success', 'participante atualizado com sucesso.');
         } catch(Exception $e){
@@ -83,7 +88,8 @@ class ParticipanteController extends Controller
 
     public function show($id){
         $participante = Participante::findOrFail($id);
-        return view('participante.show', compact('participante'));
+        $eventos = $participante->evento()->get();
+        return view('participante.show', compact('participante', 'eventos'));
     }
 
    

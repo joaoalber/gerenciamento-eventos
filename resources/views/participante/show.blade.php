@@ -5,13 +5,13 @@
 @section('css')
     <style>
         ul li {
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
     </style>
 @endsection
 
-    <div class="ficha">
-        <div class="card" style="width: 30rem;">
+    <div class="ficha row">
+        <div class="card col-md-5 mx-auto">
     
             <div class="card-body text-center">
                 <h1 class="card-title">Ficha do Participante</h1>
@@ -30,6 +30,30 @@
             <div class="card-body text-center">
                 <a class="btn btn-success" href="{{url('participante')}}">Voltar</a>
                 <button class="imprimir-button btn btn-primary">print </button>
+            </div>
+            
+        </div>
+        <div class="card col-md-5 mx-auto">
+    
+            <div class="card-body text-center">
+                <h1 class="card-title">Eventos</h1>
+            </div>
+            <ul class="list-group list-group-flush">
+            @foreach($eventos as $evento)
+            <li class="list-group-item">
+                <div class="row"> 
+                <div class="col-sm-6 text-center">
+                {{$evento->nome}}
+                </div>
+                <div class="col-sm-6 text-right">
+                <a class="btn btn-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a>
+                </div>
+                </div>
+            </li>
+                @endforeach
+                </ul>
+            <div class="card-body text-center">
+                
             </div>
             
         </div>
