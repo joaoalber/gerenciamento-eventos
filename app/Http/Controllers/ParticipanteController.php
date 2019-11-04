@@ -39,7 +39,8 @@ class ParticipanteController extends Controller
 
     public function edit($id){
         $participante = Participante::findOrFail($id);
-        return view('participante.form', compact('participante'));
+        $eventos = Evento::all(['id', 'nome']);
+        return view('participante.form', compact('participante', 'eventos'));
     }
 
     public function update(CreateParticipante $request, $id){
