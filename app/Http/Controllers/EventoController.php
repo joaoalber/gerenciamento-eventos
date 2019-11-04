@@ -105,7 +105,7 @@ class EventoController extends Controller
         // $evento = $request['evento_id'];
         // $participantes = $request['participantes'];
         // return $request;
-        //(Flávio) Participantes cadastrados e retirados com sucesso!
+        //(Flávio) Correção para permitir cadastro e retirada de participantes do evento.
         DB::beginTransaction();
         try {
             $evento = Evento::findOrFail($request['evento_id']);
@@ -117,5 +117,12 @@ class EventoController extends Controller
             DB::rollback();
             return redirect('/evento')->with('error','Erro ao cadastrar participantes!');
         }
+
+        // $evento = Evento::FindOrFail($request['evento_id']);
+
+        // foreach($request['participantes'] as $participante_id){
+        //     $evento->participante()->attach($participante_id);
+        // }
+        //dd($request['participantes']);
     }
 }
