@@ -100,8 +100,11 @@ class EventoController extends Controller
     }
 
     public function salvaParticipante(Request $request){
-        $evento = $request['evento_id'];
-        $participantes = $request['participantes'];
-        return $request;
+        $evento = Evento::FindOrFail($request['evento_id']);
+
+        foreach($request['participantes'] as $participante_id){
+            $evento->participante()->attach($participante_id);
+        }
+        //dd($request['participantes']);
     }
 }
