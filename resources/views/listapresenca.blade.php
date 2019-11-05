@@ -36,7 +36,7 @@
                 <table>
         </div>
         <div class="card-footer d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Imprimir Lista</button>
+                        <button type="submit" class="btn btn-primary" onclick="window.print()">Imprimir Lista</button>
                     </div>
     </div>
 
