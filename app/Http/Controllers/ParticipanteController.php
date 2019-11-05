@@ -21,7 +21,8 @@ class ParticipanteController extends Controller
 
     public function store(CreateParticipante $request){
 
-        return ($request);
+        //Favor manter esses tipos de return comentados quando der push pro git. Vlw!
+        // return ($request);
         DB::beginTransaction();
         
         
