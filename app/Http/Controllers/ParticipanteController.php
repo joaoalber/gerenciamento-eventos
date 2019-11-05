@@ -40,10 +40,8 @@ class ParticipanteController extends Controller
 
     public function edit($id){
         $participante = Participante::findOrFail($id);
-        $eventos = Evento::all(['id', 'nome']);
-        $evento_participante = $participante->evento()->first();
         // return($evento_participante->pivot->evento_id);
-        return view('participante.form', compact('participante', 'eventos', 'evento_participante'));
+        return view('participante.atualizar', compact('participante'));
     }
 
     public function update(CreateParticipante $request, $id){
@@ -52,8 +50,6 @@ class ParticipanteController extends Controller
         try {
             $participante = Participante::findOrFail($id);
             $participante->update($request->all());
-            $participante->evento()->detach(); //(Flávio) Correção futura: Cadastrar eventos através da página do participante faz com que o participante possa ter o mesmo evento cadastrado várias vezes! O detach apaga todas as ligações entre participante e evento e cadastra de novo esse novo. Isso é um concerto temporário...
-            $participante->evento()->attach($request->eventos);
             DB::commit();
             return redirect('/participante')->with('success', 'participante atualizado com sucesso.');
         } catch(Exception $e){

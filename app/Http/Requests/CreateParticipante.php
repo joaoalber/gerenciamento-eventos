@@ -31,8 +31,7 @@ class CreateParticipante extends FormRequest
             'email'            => 'required|email|unique:participante,email'.$this->route('id'),
             'telefone'         => 'required',
             'data_nascimento'  => 'required|date',
-            'organizacao'      => 'required|string',
-            'eventos'          => 'required|integer'
+            'organizacao'      => 'required|string'
         ];
     }
 }

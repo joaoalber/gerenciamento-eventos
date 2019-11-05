@@ -1,5 +1,5 @@
 @extends('template')
-@section('title', 'Cadastro de participante')
+@section('title', 'Atualizar Dados')
 @section('content')
 
     @if($errors->any())
@@ -12,7 +12,7 @@
         {{csrf_field()}}
             <div class="card text-center">
                 <div class="card header">
-                    <h2>Cadastro de Participante</h2>
+                    <h2>Atualizar Dados</h2>
                 </div>
 
                 <div class="card-body">
@@ -68,25 +68,6 @@
                                 <input required type="text" id="organizacao" name="organizacao" class="form-control" placeholder="Organização" value="{{old('organizacao', isset($participante) ? $participante->organizacao : '')}}">
                         </div>
 
-                        <div class="input-group col mt-3 mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="material-icons">event</i></span>
-                            </div>
-                            <select class="form-control" name="eventos">
-                                <option value="">Escolha o evento</option>
-                                @foreach($eventos as $evento)
-                                    <option value="{{$evento->id}}" 
-                                        <?php 
-                                            if(isset($evento_participante)){
-                                                if($evento_participante->pivot->evento_id == $evento->id){
-                                                   echo 'selected';
-                                                }
-                                            }
-                                        ?>
-                                    >{{$evento->nome}}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div class="card-footer text-right">
