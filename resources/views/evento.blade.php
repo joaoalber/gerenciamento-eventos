@@ -14,8 +14,6 @@
 
   @section('content')
 
-
-
     <div class="card text-center position-static" style="margin:auto;width:110%;">
         <div class="card-header">
             <h3>Eventos</h3>
@@ -25,16 +23,15 @@
                 <a class="btn btn-outline-primary mr-3 align-self-center" href="{{url('evento/create')}}">Criar evento</a>
             </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item active">
-    <a class="nav-link" id="eventos-tab" data-toggle="tab" href="#eventos" role="tab" aria-controls="eventos" aria-selected="true">Ativos</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="eventosInativos-tab" data-toggle="tab" href="#eventosInativos" role="tab" aria-controls="eventosInativos" aria-selected="false">Inativos</a>
-  </li>
-</ul>
+                <li class="nav-item active">
+                  <a class="nav-link" id="eventos-tab" data-toggle="tab" href="#eventos" role="tab"          aria-controls="eventos" aria-selected="true">Ativos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="eventosInativos-tab" data-toggle="tab" href="#eventosInativos"    role="tab" aria-controls="eventosInativos" aria-selected="false">Inativos</a>
+                </li>
+            </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="eventos" role="tabpanel" aria-labelledby="eventos-tab">
-        
     <table class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
         <thead>
             <tr> 
@@ -70,7 +67,7 @@
         </tbody>
     </table>
     <nav class="d-flex justify-content-center" aria-label="Page navigation example">
-    {{ $eventos->links() }}
+    {{ $eventos->appends(['ativos' => $eventos->currentPage(), 'inativos' => $eventosInativos->currentPage()])->links() }}
             </nav>
   </div>
   <div class="tab-pane fade" id="eventosInativos" role="tabpanel" aria-labelledby="eventosInativos-tab">
@@ -103,7 +100,7 @@
         </tbody>
     </table> 
     <nav class="d-flex justify-content-center" aria-label="Page navigation example">
-    {{ $eventosInativos->links() }}
+    {{ $eventosInativos->appends(['ativos' => $eventos->currentPage(), 'inativos' => $eventosInativos->currentPage()])->links() }}
             </nav>
     
     </div>

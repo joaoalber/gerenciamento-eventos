@@ -10,9 +10,17 @@ use DB;
 class EventoController extends Controller
 {
     public function index(){
-        $eventos = Evento::paginate(5);
-        $eventosInativos = Evento::onlyTrashed()->paginate(5);
-        return view('evento', compact('eventos', 'eventosInativos'));
+        $eventos = Evento::paginate(5, ['*'], 'ativos')->onEachSide(2);
+        $eventosInativos = Evento::onlyTrashed()->paginate(5, ['*'], 'inativos')->onEachSide(2);
+
+        if ($eventos->currentPage() > 1 && $eventos->isEmpty()) {
+            return redirect('evento?ativos='.(($eventos->currentPage())-1).'&inativos='.$eventosInativos->currentPage());
+        }
+        if ($eventosInativos->currentPage()> 1 && $eventosInativos->isEmpty()) {
+            return redirect('evento?inativos='.($eventosInativos->currentPage()-1).'&ativos='.($eventos->currentPage()));
+        }
+
+        return view('evento', compact('eventos', 'eventosInativos',));
     }
 
     public function create(){
