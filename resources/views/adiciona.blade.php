@@ -15,7 +15,7 @@
 @section('content')
 
 <div class="card" style="width: 40rem;">
-  <div class="card-header text-center">Adicionar Participante</div>
+  <div class="card-header text-center">Gerenciar Participante</div>
   <div class="card-body">
       <form method="POST" action="{{url('/evento/salva')}}">
         @csrf
@@ -31,7 +31,7 @@
                           if(isset($evento_participante)){
                             foreach ($evento_participante as $key) {
                               if($key->pivot->participante_id == $participante->id){
-                                echo 'disabled';
+                                echo 'checked';
                               }
                             }
                           }
