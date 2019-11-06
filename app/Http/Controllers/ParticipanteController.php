@@ -21,7 +21,7 @@ class ParticipanteController extends Controller
 
     public function store(CreateParticipante $request){
 
-        return ($request);
+        // return ($request);
         DB::beginTransaction();
         
         
