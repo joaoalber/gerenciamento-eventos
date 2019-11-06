@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Evento;
-use App\Participante;
+use App\{Evento, Partcipante};
 use DB;
 
 class EventoController extends Controller
@@ -47,10 +46,10 @@ class EventoController extends Controller
             );
 
             DB::commit();
-            return redirect('/evento');
+            return redirect('evento')->with('success', 'Evento cadastrado com sucesso!');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect('/evento');
+            return redirect('evento')->with('error', 'Erro ao cadastrar evento!');
         }
     }
 
@@ -121,10 +120,10 @@ class EventoController extends Controller
             $evento->participante()->detach();
             $evento->participante()->attach($request['participantes']);
             DB::commit();
-            return redirect('/evento')->with('success','Participantes cadastrados com sucesso!');
+            return redirect('evento')->with('success','Participantes cadastrados com sucesso!');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect('/evento')->with('error','Erro ao cadastrar participantes!');
+            return redirect('evento')->with('error','Erro ao cadastrar participantes!');
         }
 
         // $evento = Evento::FindOrFail($request['evento_id']);

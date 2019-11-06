@@ -2,7 +2,7 @@
 @section('title')
   Main
 @endsection
-@section('content')
+@section('home')
 <div class="card">
     <div class="card-header">
         <div class="row">
