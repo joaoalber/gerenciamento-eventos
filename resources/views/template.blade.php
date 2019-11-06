@@ -79,20 +79,20 @@
 
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('participante')}}">
-                    <div class="row mr-1 ml-1">
-                        <i class="material-icons mr-1">account_circle</i>
-                        Participantes
-                    </div>
-                </a>
-            </li>
             <!-- <ul class="navbar-nav mt-2 mt-lg-0 ml-auto"> -->
             <li class="nav-item">
                 <a class="nav-link" href="{{url('evento')}}">
                     <div class="row mr-1 ml-1">
                         <i class="material-icons mr-1">event</i>
                         Eventos
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('participante')}}">
+                    <div class="row mr-1 ml-1">
+                        <i class="material-icons mr-1">account_circle</i>
+                        Participantes
                     </div>
                 </a>
             </li>

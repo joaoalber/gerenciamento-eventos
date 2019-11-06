@@ -75,15 +75,7 @@
                             <select class="form-control" name="eventos">
                                 <option value="">Escolha o evento</option>
                                 @foreach($eventos as $evento)
-                                    <option value="{{$evento->id}}" 
-                                        <?php 
-                                            if(isset($evento_participante)){
-                                                if($evento_participante->pivot->evento_id == $evento->id){
-                                                   echo 'selected';
-                                                }
-                                            }
-                                        ?>
-                                    >{{$evento->nome}}</option>
+                                    <option value="{{$evento->id}}">{{$evento->nome}}</option>
                                 @endforeach
                             </select>
                         </div>

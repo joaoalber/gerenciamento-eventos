@@ -26,7 +26,8 @@
         <!-- (Flávio) Checkbox agora vem com os participantes que pertencem a esse evento checkados. participantes[] agora tem um index diferente para cada opção (participantes[0], participantes[1], etc..). -->
         @foreach($participantes as $participante)
         <div class="custom-control custom-checkbox">
-               <input class="custom-control-input" id="customCheck<?php echo $i ?>" type="checkbox" name="participantes[<?php echo $i ?>]" value="{{$participante->id}}" <?php 
+               <input class="custom-control-input" id="customCheck<?php echo $i ?>" type="checkbox" name="participantes[<?php echo $i ?>]" value="{{$participante->id}}" 
+               <?php 
                     if(isset($evento_participante)){
                       foreach ($evento_participante as $key) {
                         if($key->pivot->participante_id == $participante->id){

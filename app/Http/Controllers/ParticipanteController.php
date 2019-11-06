@@ -21,6 +21,7 @@ class ParticipanteController extends Controller
 
     public function store(CreateParticipante $request){
 
+        //Favor manter esses tipos de return comentados quando der push pro git. Vlw!
         // return ($request);
         DB::beginTransaction();
         
@@ -84,7 +85,7 @@ class ParticipanteController extends Controller
 
     public function show($id){
         $participante = Participante::findOrFail($id);
-        $eventos = $participante->evento()->get();
+        $eventos = $participante->evento()->paginate(4);
         return view('participante.show', compact('participante', 'eventos'));
     }
 
