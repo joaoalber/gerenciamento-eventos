@@ -48,8 +48,13 @@
 
                         @foreach($eventos as $evento)
                         <tr>
+                            @if(isset($evento->deleted_at))
+                            <td style="color:red">{{$evento->nome}}</td>
+                            <td style="color:red">(Cancelado)</td>
+                            @else
                             <td>{{$evento->nome}}</td>
                             <td><a class="btn btn-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                            @endif
                             <tr>
                         @endforeach    
                     </tbody>
