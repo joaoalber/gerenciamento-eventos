@@ -34,6 +34,137 @@ class DatabaseSeeder extends Seeder
         }catch(\Exception $e){}
         
         try{
+            DB::table('evento')->insert([
+            [
+                'nome' => 'Evento3',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento4',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento5',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento6',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento7',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento8',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento9',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento10',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento11',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento12',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento13',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento14',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento15',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento16',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento17',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento18',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento19',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ],
+            [
+                'nome' => 'Evento20',	
+                'data'	=> '2019-12-30',
+                'descricao'	=> 'Evento de Teste',
+                'local'	=> 'Algum lugar',
+                'hora' => '12:00',
+            ]
+            ]);
+        }catch(\Exception $e){}
+
+        try{
             DB::table('participante')->insert([
                 'nome' => 'Joséfo Joãoestrela',
                 'rg' => '12345678-8',
@@ -71,8 +202,35 @@ class DatabaseSeeder extends Seeder
 
         try{
             DB::table('participantes_eventos')->insert([
+                [
                 'participante_id' => 1,
                 'evento_id' => 1,
+                ],
+                [
+                    'participante_id' => 1,
+                    'evento_id' => 2,
+                ],
+                [
+                    'participante_id' => 1,
+                    'evento_id' => 3,
+                ],
+                [
+                    'participante_id' => 1,
+                    'evento_id' => 4,
+                ],
+                [
+                    'participante_id' => 1,
+                    'evento_id' => 5,
+                ],
+                [
+                    'participante_id' => 1,
+                    'evento_id' => 6,
+                ],
+                [
+                    'participante_id' => 1,
+                    'evento_id' => 7,
+                ],
+                
             ]);
         }catch(\Exception $e){}
         

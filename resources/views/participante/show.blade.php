@@ -1,6 +1,6 @@
 @extends('template')
 @section('title', 'Ficha do participante')
-@section('content')
+@section('home')
 
 @section('css')
     <style>
@@ -38,7 +38,9 @@
             </div>
             <table class="table table-hover text-center">
                 <thead class="thead-light">
-                    <th colspan="2">Eventos</th>
+                    <th>Evento</th>
+                    <th>Data</th>
+                    <th colspan="2">Hora</th>
                     </thead>
                 <tbody>
                     @if(empty($eventos))
@@ -49,9 +51,13 @@
                         <tr>
                             @if(isset($evento->deleted_at))
                             <td style="color:red">{{$evento->nome}}</td>
+                            <td style="color:red">{{$evento->data}}</td>
+                            <td style="color:red">{{$evento->hora}}</td>
                             <td style="color:red">(Cancelado)</td>
                             @else
                             <td>{{$evento->nome}}</td>
+                            <td>{{$evento->data}}</td>
+                            <td>{{$evento->hora}}</td>
                             <td><a class="btn btn-outline-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
                             @endif
                             <tr>
