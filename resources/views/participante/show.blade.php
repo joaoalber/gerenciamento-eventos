@@ -11,7 +11,7 @@
 @endsection
 
     <div class="card-deck ficha row">
-        <div class="card col-md-5 mx-auto">
+        <div class="card col-md-6 mx-auto">
     
             <div class="card-header text-center">
                 <h1 class="card-title">Ficha do Participante</h1>
@@ -28,14 +28,13 @@
             </ul>
             <div class="card-body"></div>
             <div class="card-footer text-center">
-                <a class="btn btn-success" href="{{url('participante')}}">Voltar</a>
-                <button class="imprimir-button btn btn-primary">print </button>
+                <a class="btn btn-outline-success" href="{{url('participante')}}">Voltar</a>
             </div>
             
         </div>
         <div class="card col-md-5 mx-auto">
             <div class="card-header text-center">
-                <h1 class="card-title">Eventos que Participa</h1>
+                <h1 class="card-title">Eventos</h1>
             </div>
             <table class="table table-hover text-center">
                 <thead class="thead-light">
@@ -53,7 +52,7 @@
                             <td style="color:red">(Cancelado)</td>
                             @else
                             <td>{{$evento->nome}}</td>
-                            <td><a class="btn btn-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                            <td><a class="btn btn-outline-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
                             @endif
                             <tr>
                         @endforeach    
