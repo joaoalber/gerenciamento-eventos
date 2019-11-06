@@ -40,7 +40,7 @@
                 <thead class="thead-light">
                     <th>Evento</th>
                     <th>Data</th>
-                    <th colspan="2">Hora</th>
+                    <th colspan="2" style="text-align:left">Hora</th>
                     </thead>
                 <tbody>
                     @if(empty($eventos))
