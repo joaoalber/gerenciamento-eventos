@@ -55,7 +55,7 @@
                 <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
                 <td>{{ $evento->local }}</td>
                 <td>{{ $evento->descricao }}</td>
-                <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-outline-primary">Listar</a><a href="{{'evento/adicionaparticipante/'.$evento->id}}" class="btn btn-outline-success">Adicionar</a></div></td>
+                <td><div class="d-flex justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-outline-primary">Listar</a><a href="{{'evento/adicionaparticipante/'.$evento->id}}" class="btn btn-outline-success  ml-5">Adicionar</a></div></td>
 
                 <td><a href="{{url('evento/'.$evento->id.'/edit')}}" class="btn btn-outline-warning ">Editar</a></td>
                 <td>
@@ -72,41 +72,7 @@
 
   </div>
   <div class="tab-pane fade" id="eventosInativos" role="tabpanel" aria-labelledby="eventosInativos-tab">
-<!--         
-        <table class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
-            <thead>
-                <tr> 
-                    <th scope="col">Nome</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Local</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Participantes</th>
-                    <th colspan="2">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($eventosInativos as $evento)
-                <tr id="eventos">
-                    <td>{{ $evento->nome }}</td>
-                    <td>{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
-                    <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
-                    <td>{{ $evento->local }}</td>
-                    <td>{{ $evento->descricao }}</td>
-                    <td><div class="justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-outline-primary">Listar</a><a href="{{'evento/adicionaparticipante/'.$evento->id}}" class="btn btn-outline-success">Adicionar</a></div></td>
-    
-                    <td><a href="{{url('evento/'.$evento->id.'/edit')}}" class="btn btn-outline-warning ">Editar</a></td>
-                    <td>
-                        <form action="{{url('evento', [$evento->id])}}" method="POST">
-                            {{method_field('DELETE')}}
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-outline-danger">Deletar</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table> -->
+
     
       </div>
 </div>
