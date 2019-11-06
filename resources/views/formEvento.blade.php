@@ -13,7 +13,7 @@
 @endsection
 @section('content')
     <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
-        <div class="card col-9">
+        <div class="card">
             <div class="card-header text-center">Cadastro de Eventos</div>
                 <div class="card-body">
                     <form method="POST" action="{{url($data['url'])}}">
@@ -22,7 +22,7 @@
                     @endif
                     @csrf
                         <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-5">
                                     <label for="">Nome</label>
                                     <input type="text" value="{{old('evento.nome', $data['evento'] ? $data['evento']->nome : '')}}" name="evento[nome]" class="form-control">
                                 </div>
@@ -37,7 +37,7 @@
                                 <input type="time" value="{{old('evento.hora', $data['evento'] ? $data['evento']->hora : '')}}" name="evento[hora]" class="form-control">
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-5">
                                 <label for="">Descrição</label>
                                 <input type="text" value="{{old('evento.descricao', $data['evento'] ? $data['evento']->descricao : '')}}" name="evento[descricao]" class="form-control">
                             </div>
@@ -53,7 +53,7 @@
                    
                 </div>
                     <div class="card-footer d-flex justify-content-end">
-                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="submit" class="btn btn-outline-success">Salvar</button>
                     </div>
                 </form>
          </div>
