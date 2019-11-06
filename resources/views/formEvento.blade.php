@@ -53,7 +53,8 @@
                    
                 </div>
                     <div class="card-footer d-flex justify-content-end">
-                        <button type="submit" class="btn btn-outline-success">Salvar</button>
+                    <a class="btn btn-outline-primary " href="{{url('evento')}}">Voltar</a>
+                        <button type="submit" class="btn btn-outline-success ml-2">Salvar</button>
                     </div>
                 </form>
          </div>
