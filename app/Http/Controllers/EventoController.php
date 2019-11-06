@@ -10,8 +10,9 @@ use DB;
 class EventoController extends Controller
 {
     public function index(){
-        $eventos = Evento::all();
-        return view('evento', compact('eventos'));
+        $eventos = Evento::paginate(5);
+        $eventosInativos = Evento::onlyTrashed()->paginate(5);
+        return view('evento', compact('eventos', 'eventosInativos'));
     }
 
     public function create(){
