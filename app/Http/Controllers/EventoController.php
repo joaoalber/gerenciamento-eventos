@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Evento;
-use App\Participante;
+use App\{Evento, Participante};
 use DB;
 
 class EventoController extends Controller
 {
     public function index(){
-        $eventos = Evento::all();
-        return view('evento', compact('eventos'));
+        $eventos = Evento::paginate(5, ['*'], 'ativos')->onEachSide(2);
+        $eventosInativos = Evento::onlyTrashed()->paginate(5, ['*'], 'inativos')->onEachSide(2);
+
+        if ($eventos->currentPage() > 1 && $eventos->isEmpty()) {
+            return redirect('evento?ativos='.(($eventos->currentPage())-1).'&inativos='.$eventosInativos->currentPage());
+        }
+        if ($eventosInativos->currentPage()> 1 && $eventosInativos->isEmpty()) {
+            return redirect('evento?inativos='.($eventosInativos->currentPage()-1).'&ativos='.($eventos->currentPage()));
+        }
+
+        return view('evento', compact('eventos', 'eventosInativos',));
     }
 
     public function create(){
@@ -38,10 +46,10 @@ class EventoController extends Controller
             );
 
             DB::commit();
-            return redirect('/evento');
+            return redirect('evento')->with('success', 'Evento cadastrado com sucesso!');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect('/evento');
+            return redirect('evento')->with('error', 'Erro ao cadastrar evento!');
         }
     }
 
@@ -112,10 +120,10 @@ class EventoController extends Controller
             $evento->participante()->detach();
             $evento->participante()->attach($request['participantes']);
             DB::commit();
-            return redirect('/evento')->with('success','Participantes cadastrados com sucesso!');
+            return redirect('evento')->with('success','Participantes cadastrados com sucesso!');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect('/evento')->with('error','Erro ao cadastrar participantes!');
+            return redirect('evento')->with('error','Erro ao cadastrar participantes!');
         }
 
         // $evento = Evento::FindOrFail($request['evento_id']);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="margin-bottom: 65px">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,15 +104,6 @@
     </nav> -->
     <br>
 
-
-    <div class="container d-flex justify-content-center">
-        @yield('content')
-    </div>
-
-        <nav class="navbar fixed-bottom navbar-dark bg-dark">
-            <a class=" mx-auto navbar-brand" href="#">IFSP@2019</a>
-        </nav>
-
     <div class="row">
         @if (Session::has('success'))
             <script>
@@ -139,7 +130,20 @@
         @endif
     </div>
 
+        <div class="container d-flex justify-content-center">
+            @yield('content')
+        </div>
+
+        <div class="container justify-content-center">
+            @yield('home')
+        </div>
+
+        <nav class="navbar fixed-bottom navbar-dark bg-dark pt-1 pb-1">
+            <a class=" mx-auto navbar-brand" href="#">IFSP@2019</a>
+        </nav>
+
 @section('js')
+<script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
 <script>
         const Toast = Swal.mixin({
             toast: true,

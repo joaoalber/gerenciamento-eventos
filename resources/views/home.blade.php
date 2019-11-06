@@ -2,7 +2,7 @@
 @section('title')
   Main
 @endsection
-@section('content')
+@section('home')
 <div class="card">
     <div class="card-header">
         <div class="row">
@@ -14,7 +14,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="card text-white bg-info">
                     <div class="card-header">
                         <a style="text-decoration: none;color:white" href="{{url('evento')}}"><h5>Eventos</h5></a>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="card text-white bg-warning">
                     <div class="card-header">
                         <a style="text-decoration: none;color:white" href="{{url('participante')}}"><h5>Participantes</h5></a>
