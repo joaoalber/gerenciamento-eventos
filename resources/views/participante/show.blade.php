@@ -10,10 +10,10 @@
     </style>
 @endsection
 
-    <div class="ficha row">
+    <div class="card-deck ficha row">
         <div class="card col-md-5 mx-auto">
     
-            <div class="card-body text-center">
+            <div class="card-header text-center">
                 <h1 class="card-title">Ficha do Participante</h1>
             </div>
 
@@ -26,34 +26,40 @@
                 <li class="list-group-item"><strong>Data de nascimento:</strong> {{\Carbon\Carbon::parse($participante->data_nascimento)->format('d/m/Y')}}</li>
                 <li class="list-group-item"><strong>Organização:</strong> {{$participante->organizacao}}</li>
             </ul>
-
-            <div class="card-body text-center">
+            <div class="card-body"></div>
+            <div class="card-footer text-center">
                 <a class="btn btn-success" href="{{url('participante')}}">Voltar</a>
                 <button class="imprimir-button btn btn-primary">print </button>
             </div>
             
         </div>
         <div class="card col-md-5 mx-auto">
-    
-            <div class="card-body text-center">
-                <h1 class="card-title">Eventos</h1>
+            <div class="card-header text-center">
+                <h1 class="card-title">Eventos que Participa</h1>
             </div>
-            <ul class="list-group list-group-flush">
-            @foreach($eventos as $evento)
-            <li class="list-group-item">
-                <div class="row"> 
-                <div class="col-sm-6 text-center">
-                {{$evento->nome}}
-                </div>
-                <div class="col-sm-6 text-right">
-                <a class="btn btn-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a>
-                </div>
-                </div>
-            </li>
-                @endforeach
-                </ul>
-            <div class="card-body text-center">
+            <table class="table table-hover text-center">
+                <thead class="thead-light">
+                    <th colspan="2">Eventos</th>
+                    </thead>
+                <tbody>
+                    @if(empty($eventos))
+                        <div>Você não participa de nenhum evento.</div>
+                        @else
+
+                        @foreach($eventos as $evento)
+                        <tr>
+                            <td>{{$evento->nome}}</td>
+                            <td><a class="btn btn-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                            <tr>
+                        @endforeach    
+                    </tbody>
+                <table>
                 
+                @endif
+            <div class="card-body"></div>
+            <div class="card-footer" style="padding-bottom:1px; padding-top:7.5px; display: flex;
+    justify-content: center;">
+                    {{ $eventos->links() }}
             </div>
             
         </div>
