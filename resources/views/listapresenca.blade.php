@@ -10,18 +10,44 @@
       #teste #first{
           margin-right: 2rem;
       }
+
+      #scrollbar{
+        height: 400px;
+        overflow: auto;
+      }
+
+    #scrollbar::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    #scrollbar::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    #scrollbar::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #878787;
+    }
+
   </style>
 @endsection
 @section('content')
 
-<div class="card text-center position-static" style="margin:auto;width:110%;">
+<div class="card text-center" style="margin:auto;width:100%;height:80%;">
         <div class="card-header">
             <h3>Lista de Participantes</h3>
         </div>
         <div class="card-body"><nav>
-            <div class="tab-content" id="nav-tabContent" style="width:100%">
+            <div class="tab-content" id="nav-tabContent" style="width:100% height:70%;">
                 <div class="tab-pane fade show active" id="nav-teste" role="tabpanel" aria-labelledby="nav-teste-tab">
-                    <div>
+                    <div id="scrollbar">
                         <table class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
                             <thead>
                                 <tr>
@@ -42,10 +68,10 @@
                                 @endif
                             </tbody>
                         </table>
+                    </div>
                         <div class="card-footer d-flex justify-content-end">
                             <button type="submit" class="btn btn-outline-primary" onclick="window.print()">Imprimir Lista</button>
                         </div>  
-                    </div>
                 </div>
             </div>
         </div>
