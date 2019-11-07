@@ -9,10 +9,9 @@
         }
     </style>
 @endsection
-
+<?php date_default_timezone_set('America/Sao_Paulo');?>
     <div class="card-deck ficha row">
         <div class="card col-md-6 mx-auto">
-    
             <div class="card-header text-center">
                 <h1 class="card-title">Ficha do Participante</h1>
             </div>
@@ -36,7 +35,8 @@
             <div class="card-header text-center">
                 <h1 class="card-title">Eventos</h1>
             </div>
-            <table class="table table-hover text-center">
+            <div style="overflow-x: auto;">
+            <table class="table table-hover text-center" >
                 <thead class="thead-light">
                     <th>Evento</th>
                     <th>Data</th>
@@ -51,27 +51,33 @@
                         <tr>
                             @if(isset($evento->deleted_at))
                             <td style="color:red">{{$evento->nome}}</td>
-                            <td style="color:red">{{$evento->data}}</td>
-                            <td style="color:red">{{$evento->hora}}</td>
+                            <td style="color:red">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                            <td style="color:red">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
                             <td style="color:red">(Cancelado)</td>
                             @else
-                            <td>{{$evento->nome}}</td>
-                            <td>{{$evento->data}}</td>
-                            <td>{{$evento->hora}}</td>
-                            <td><a class="btn btn-outline-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                                @if(date('Y-m-d H:i:s') > $evento->data.' '.$evento->hora)
+                                    <td style="color:gray">{{$evento->nome}}</td>
+                                    <td style="color:gray">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                                    <td style="color:gray">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
+                                    <td style="color:gray">(Evento Expirado)</td>
+                                @else
+                                    <td>{{$evento->nome}}</td>
+                                    <td>{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
+                                    <td><a class="btn btn-outline-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                                @endif
                             @endif
                             <tr>
                         @endforeach    
                     </tbody>
+                    @endif
                 <table>
-                
-                @endif
+                </div>
             <div class="card-body"></div>
             <div class="card-footer" style="padding-bottom:1px; padding-top:7.5px; display: flex;
     justify-content: center;">
                     {{ $eventos->links() }}
             </div>
-            
         </div>
         
     </div>

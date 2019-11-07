@@ -10,8 +10,17 @@ use DB;
 class ParticipanteController extends Controller
 {
     public function index(){
-        $participantes = Participante::all();
-        return view('participante.index', compact('participantes'));
+        $participantes = Participante::paginate(5, ['*'], 'ativos')->onEachSide(2);
+        $participantesInativos = Participante::onlyTrashed()->paginate(5, ['*'], 'inativos')->onEachSide(2);
+        
+        if ($participantes->currentPage() > 1 && $participantes->isEmpty()) {
+            return redirect('participante?ativos='.(($participantes->currentPage())-1).'&inativos='.$participantesInativos->currentPage());
+        }
+        if ($participantesInativos->currentPage()> 1 && $participantesInativos->isEmpty()) {
+            return redirect('participante?inativos='.($participantesInativos->currentPage()-1).'&ativos='.($participantes->currentPage()));
+        }
+
+        return view('participante.index', compact('participantes', 'participantesInativos'));
     }
 
     public function create(){
