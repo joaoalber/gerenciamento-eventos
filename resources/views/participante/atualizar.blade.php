@@ -10,11 +10,11 @@
 
         <form id="form" method="POST" action="{{url(isset($participante) ? 'participante/update/'.$participante->id : 'participante/store')}}">
         {{csrf_field()}}
-            <div class="card text-center">
-                <div class="card header">
-                    <h2>Atualizar Dados</h2>
-                </div>
+        
 
+        <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
+        <div class="card col-11">
+        <div class="card-header text-center">Atualizar Dados</div>
                 <div class="card-body">
                     <div class="form-group row">
                         <div class="input-group col-sm-4">
@@ -71,9 +71,11 @@
                     </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a class="btn btn-primary " href="{{url('participante')}}">Voltar</a>
-                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <a class="btn btn-outline-primary " href="{{url('participante')}}">Voltar</a>
+                    <button type="submit" class="btn btn-outline-success">Salvar</button>
                 </div>
+            </div>
+            </div>
             </div>
 
             <script>
