@@ -13,7 +13,7 @@
   @endsection
 
   @section('content')
-
+    <?php date_default_timezone_set('America/Sao_Paulo');?>
     <div class="card text-center position-static" style="margin:auto;width:110%;">
         <div class="card-header">
             <h3>Eventos</h3>
@@ -41,6 +41,7 @@
                 <th scope="col">Hora</th>
                 <th scope="col">Local</th>
                 <th scope="col">Descrição</th>
+                <th scope="col">Situação</th>
                 <th scope="col">Participantes</th>
                 <th colspan="2">Ações</th>
             </tr>
@@ -53,6 +54,17 @@
                 <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
                 <td>{{ $evento->local }}</td>
                 <td>{{ $evento->descricao }}</td>
+                <td>
+                    @if($evento->cancelado > 0)
+                        <span style="color:red">Cancelado</span>
+                    @else
+                        @if(date('Y-m-d H:i:s') > $evento->data.' '.$evento->hora)
+                            <span style="color:#c9c90c">Expirado</span>
+                        @else
+                            <span style="color:green">Ativo</span>
+                        @endif
+                    @endif
+                </td>
                 <td><div class="d-flex justify-content-center"><a href="{{url('evento/presenca/'.$evento->id)}}" id="first" class="btn btn-outline-primary">Listar</a><a href="{{'evento/adicionaparticipante/'.$evento->id}}" class="btn btn-outline-success  ml-5">Gerenciar</a></div></td>
 
                 <td><a href="{{url('evento/'.$evento->id.'/edit')}}" class="btn btn-outline-dark ">Editar</a></td>

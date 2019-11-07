@@ -41,7 +41,8 @@ class EventoController extends Controller
                     'data' => $request['evento']['data'],
                     'descricao' => $request['evento']['descricao'],
                     'local' => $request['evento']['local'],
-                    'hora' => $request['evento']['hora']
+                    'hora' => $request['evento']['hora'],
+                    'cancelado' => $request['evento']['cancelado']
                 ]
             );
 
@@ -49,6 +50,7 @@ class EventoController extends Controller
             return redirect('evento')->with('success', 'Evento cadastrado com sucesso!');
         } catch (\Exception $e) {
             DB::rollback();
+            dd($e);
             return redirect('evento')->with('error', 'Erro ao cadastrar evento!');
         }
     }
@@ -74,10 +76,11 @@ class EventoController extends Controller
                 'data' => $request['evento']['data'],
                 'hora' => $request['evento']['hora'],
                 'descricao' => $request['evento']['descricao'],
-                'local' => $request['evento']['local']
+                'local' => $request['evento']['local'],
+                'cancelado' => $request['evento']['cancelado']
             ]
         );
-        
+
         return redirect('/evento');
     }
 
@@ -99,7 +102,7 @@ class EventoController extends Controller
 
 
     public function AdicionaParticipante($id){
-        $participantes = Participante::all();
+        $participantes = Participante::orderBy('nome')->get();
         $evento = Evento::findOrFail($id);
         $data = [
             'evento_id' => $id

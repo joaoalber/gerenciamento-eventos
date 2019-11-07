@@ -20,6 +20,7 @@ class CreateEventosTable extends Migration
             $table->string('descricao');
             $table->string('local');
             $table->time('hora');
+            $table->boolean('cancelado')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

@@ -26,18 +26,32 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">subtitles</i></span>
-                                    </div>      
-                                    <input required type="text" id="nome" name="nome" class="form-control" placeholder="Nome" value="{{old('evento.nome', $data['evento'] ? $data['evento']->nome : '')}}" name="evento[nome]">
+                                    </div>
+                                    <input required type="text" id="nome" class="form-control" placeholder="Nome" value="{{old('evento.nome', $data['evento'] ? $data['evento']->nome : '')}}" name="evento[nome]">
                                 </div>
                             </div>
 
+                        <div class="form-group col-md-3 pt-1 pl-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type='hidden' value='0' name='evento[cancelado]'>
+                                <input class="custom-control-input" id="customCheck1"  type="checkbox" name="evento[cancelado]" value="1"
+                                <?php 
+                                    if($data['evento'] != ''){
+                                        if($data['evento']->cancelado == 1){
+                                            echo 'checked';
+                                        }
+                                    }
+                                ?>>
+                                <label class="custom-control-label" for="customCheck1">Cancelar</label>
+                            </div>
+                        </div>
 
                             <div class="form-group col-md-3">
                             <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">calendar_today</i></span>
                                     </div>
-                                <input required type="date" id="data" name="data" class="form-control" placeholder="Data" value="{{old('evento.data', $data['evento'] ? $data['evento']->data : '')}}" name="evento[data]">
+                                <input required type="date" id="data" class="form-control" placeholder="Data" value="{{old('evento.data', $data['evento'] ? $data['evento']->data : '')}}" name="evento[data]">
                            </div>
                            </div>
 
@@ -46,29 +60,29 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">access_time</i></span>
                                     </div>
-                                <input required type="time" id="hora" name="hora" value="{{old('evento.hora', $data['evento'] ? $data['evento']->hora : '')}}" name="evento[hora]" class="form-control">
+                                <input required type="time" id="hora" value="{{old('evento.hora', $data['evento'] ? $data['evento']->hora : '')}}" name="evento[hora]" class="form-control">
                             </div>
                             </div>
 
-                            <div class="form-group col-md-5">
-                            <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="material-icons">description</i></span>
-                                    </div>
-                                <input required type="text" id="descricao" name="descricao" placeholder="Descrição" value="{{old('evento.descricao', $data['evento'] ? $data['evento']->descricao : '')}}" name="evento[descricao]" class="form-control">
-                            </div>
-                            </div>
+                            <div class="form-group col-md-1" id="Ocupa-Espaco"></div>
 
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-6">
                             <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">deck</i></span>
                                     </div>
-                                <input required type="text" id="local" name="local" placeholder="Local" value="{{old('evento.local', $data['evento'] ? $data['evento']->local : '')}}" name="evento[local]" class="form-control">
+                                <input required type="text" id="local" placeholder="Local" value="{{old('evento.local', $data['evento'] ? $data['evento']->local : '')}}" name="evento[local]" class="form-control">
                             </div>
                             </div>
-
-
+                                        
+                            <div class="form-group col-md">
+                            <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">description</i></span>
+                                    </div>
+                                <input required type="text" id="descricao" placeholder="Descrição" value="{{old('evento.descricao', $data['evento'] ? $data['evento']->descricao : '')}}" name="evento[descricao]" class="form-control">
+                            </div>
+                            </div>
                             <!-- todo o formulario -->
                         </div>
                    

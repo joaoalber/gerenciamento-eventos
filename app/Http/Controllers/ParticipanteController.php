@@ -12,7 +12,7 @@ class ParticipanteController extends Controller
     public function index(){
         $participantes = Participante::paginate(5, ['*'], 'ativos')->onEachSide(2);
         $participantesInativos = Participante::onlyTrashed()->paginate(5, ['*'], 'inativos')->onEachSide(2);
-        
+
         if ($participantes->currentPage() > 1 && $participantes->isEmpty()) {
             return redirect('participante?ativos='.(($participantes->currentPage())-1).'&inativos='.$participantesInativos->currentPage());
         }

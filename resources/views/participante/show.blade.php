@@ -50,21 +50,28 @@
                         @foreach($eventos as $evento)
                         <tr>
                             @if(isset($evento->deleted_at))
-                            <td style="color:red">{{$evento->nome}}</td>
-                            <td style="color:red">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
-                            <td style="color:red">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
-                            <td style="color:red">(Cancelado)</td>
+                            <td style="color:gray">{{$evento->nome}}</td>
+                            <td style="color:gray">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                            <td style="color:gray">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
+                            <td style="color:gray">(Excluído)</td>
                             @else
-                                @if(date('Y-m-d H:i:s') > $evento->data.' '.$evento->hora)
-                                    <td style="color:gray">{{$evento->nome}}</td>
-                                    <td style="color:gray">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
-                                    <td style="color:gray">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
-                                    <td style="color:gray">(Evento Expirado)</td>
+                                @if($evento->cancelado > 0)
+                                    <td style="color:red">{{$evento->nome}}</td>
+                                    <td style="color:red">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                                    <td style="color:red">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
+                                    <td style="color:red">(Cancelado)</td>
                                 @else
-                                    <td>{{$evento->nome}}</td>
-                                    <td>{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
-                                    <td><a class="btn btn-outline-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                                    @if(date('Y-m-d H:i:s') > $evento->data.' '.$evento->hora)
+                                        <td style="color:#c9c90c">{{$evento->nome}}</td>
+                                        <td style="color:#c9c90c">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                                        <td style="color:#c9c90c">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
+                                        <td style="color:#c9c90c">(Evento Expirado)</td>
+                                    @else
+                                        <td style="color:green">{{$evento->nome}}</td>
+                                        <td style="color:green">{{\Carbon\Carbon::parse($evento->data)->format('d/m/Y')}}</td>
+                                        <td style="color:green">{{ \Carbon\Carbon::parse($evento->hora)->format('h:i')}}</td>
+                                        <td><a class="btn btn-outline-info" href='{{url("cracha/$participante->id/$evento->id")}}'>Imprimir Cracha</a></td>
+                                    @endif
                                 @endif
                             @endif
                             <tr>

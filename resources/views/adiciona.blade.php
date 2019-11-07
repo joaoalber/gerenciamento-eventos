@@ -16,7 +16,8 @@
 
 <div class="card" style="width: 40rem;">
   <div class="card-header text-center">Gerenciar Participante</div>
-  <div class="card-body">
+  <div style="overflow-y:auto;">
+  <div class="card-body w-100">
       <form method="POST" action="{{url('/evento/salva')}}">
         @csrf
 
@@ -43,8 +44,9 @@
 
       
     </div>
+    </div>
     <div class="card-footer d-flex justify-content-end"> 
-                <input type="submit" value="Salvar" class="btn btn-primary mt-4">
+                <input type="submit" value="Salvar" class="btn btn-primary">
               </div>
     </form>
     </div>
