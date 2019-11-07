@@ -94,7 +94,7 @@ class ParticipanteController extends Controller
 
     public function show($id){
         $participante = Participante::findOrFail($id);
-        $eventos = $participante->evento()->withTrashed()->paginate(4);
+        $eventos = $participante->evento()->orderBy('nome')->withTrashed()->paginate(4);
         return view('participante.show', compact('participante', 'eventos'));
     }
 
