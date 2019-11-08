@@ -10,7 +10,7 @@ class EventoController extends Controller
 {
     public function index(){
         $eventos = Evento::paginate(5, ['*'], 'ativos')->onEachSide(2);
-        $eventosInativos = Evento::onlyTrashed()->paginate(5, ['*'], 'inativos')->onEachSide(2);
+        $eventosInativos = Evento::orderBy('deleted_at', 'desc')->onlyTrashed()->paginate(5, ['*'], 'inativos')->onEachSide(2);
 
         if ($eventos->currentPage() > 1 && $eventos->isEmpty()) {
             return redirect('evento?ativos='.(($eventos->currentPage())-1).'&inativos='.$eventosInativos->currentPage());
