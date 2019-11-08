@@ -85,7 +85,8 @@
             </nav>
   </div>
   <div class="tab-pane fade" id="eventosInativos" role="tabpanel" aria-labelledby="eventosInativos-tab">
-  <table style="overflow-x: scroll;" class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
+  <div style="overflow-x:auto;">
+  <table class="table table-striped table-borderless bg-white" style="border-style: solid; border-color: #dee2e6; border-width: 0 1px 1px 1px;">
         <thead>
             <tr> 
                 <th scope="col">Nome</th>
@@ -112,7 +113,8 @@
             </tr>
             @endforeach
         </tbody>
-    </table> 
+    </table>
+    </div> 
     <nav class="d-flex justify-content-center" aria-label="Page navigation example">
     {{ $eventosInativos->appends(['ativos' => $eventos->currentPage(), 'inativos' => $eventosInativos->currentPage()])->links() }}
             </nav>
