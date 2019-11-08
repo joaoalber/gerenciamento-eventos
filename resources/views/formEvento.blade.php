@@ -22,6 +22,7 @@
                     @endif
                     @csrf
                         <div class="form-row">
+                        @if($data['evento'] != '')
                             <div class="form-group col-9">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -45,6 +46,16 @@
                                 <label class="custom-control-label" for="customCheck1">Cancelar</label>
                             </div>
                         </div>
+                        @else
+                        <div class="form-group col-12">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">subtitles</i></span>
+                                    </div>
+                                    <input required type="text" id="nome" class="form-control" placeholder="Nome" value="{{old('evento.nome', $data['evento'] ? $data['evento']->nome : '')}}" name="evento[nome]">
+                                </div>
+                            </div>
+                        @endif
 
                             <div class="form-group col-md-3">
                             <div class="input-group">

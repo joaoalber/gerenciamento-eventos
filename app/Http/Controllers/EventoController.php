@@ -42,7 +42,7 @@ class EventoController extends Controller
                     'descricao' => $request['evento']['descricao'],
                     'local' => $request['evento']['local'],
                     'hora' => $request['evento']['hora'],
-                    'cancelado' => $request['evento']['cancelado']
+                    'cancelado' => 0
                 ]
             );
 
