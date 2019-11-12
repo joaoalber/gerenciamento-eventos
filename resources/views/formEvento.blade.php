@@ -12,7 +12,12 @@
   </style>
 @endsection
 @section('content')
-    <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
+    <div class="container d-flex h-100 justify-content-center align-items-center row" style="min-height: 60vh">
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{$error}}</div>
+                    @endforeach
+                @endif        
         <div class="card col-11">
             <div class="card-header text-center">Cadastro de Eventos</div>
                 <div class="card-body">
@@ -62,7 +67,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">calendar_today</i></span>
                                     </div>
-                                <input required type="date" id="data" class="form-control" placeholder="Data" value="{{old('evento.data', $data['evento'] ? $data['evento']->data : '')}}" name="evento[data]">
+                                <input required type="date" max="9999-12-31" id="data" class="form-control" placeholder="Data" value="{{old('evento.data', $data['evento'] ? $data['evento']->data : '')}}" name="evento[data]">
                            </div>
                            </div>
 

@@ -2,19 +2,21 @@
 @section('title', 'Cadastro de participante')
 @section('content')
 
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-            <div class="alert alert-danger">{{$error}}</div>
-        @endforeach
-    @endif
+    
 
         <form id="form" method="POST" action="{{url(isset($participante) ? 'participante/update/'.$participante->id : 'participante/store')}}">
         {{csrf_field()}}
 
     
 
-                <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
+                <div class="container d-flex h-100 justify-content-center align-items-center row" style="min-height: 60vh">
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{$error}}</div>
+                    @endforeach
+                @endif
                 <div class="card col-11">
+
                 <div class="card-header text-center">Cadastro de Participantes</div>
                 <div class="card-body">
                     <div class="form-group row">
@@ -59,7 +61,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="material-icons">calendar_today</i></span>
                             </div>
-                            <input required type="date" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="Data de nascimento" value="{{old('data_nascimento', isset($participante) ? $participante->data_nascimento : '')}}">
+                            <input required type="date" max="9999-12-31" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="Data de nascimento" value="{{old('data_nascimento', isset($participante) ? $participante->data_nascimento : '')}}">
                         </div>
 
                         <div class="input-group col mt-3 mb-2">
@@ -88,7 +90,7 @@
                 </div>
             </div>
             </div>
-            
+
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
 
@@ -106,7 +108,7 @@
                  });
 
                  var behavior = function (val) {
-                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 00000-0009';
                 },
 
                 options = {
