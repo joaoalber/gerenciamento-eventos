@@ -88,17 +88,20 @@
                 </div>
             </div>
             </div>
-        
+            
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
 
             <script>
+            
                   $(document).ready(function () { 
-                    var $cpf = $("#cpf");
-                    $cpf.mask('000.000.000-00', {reverse: true});
+                    var cpf = $("#cpf");
+                    cpf.mask('000.000.000-00', {reverse: true});
 
                     $("#telefone").mask(behavior);
                     
-                    var $rg = $("#rg");
-                    $rg.mask('00.000.000-0');
+                    var rg = $("#rg");
+                    rg.mask('00.000.000-0');
 
                  });
 
@@ -114,3 +117,5 @@
             </script>
         </form>
 @endsection
+
+
