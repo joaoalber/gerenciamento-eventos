@@ -15,6 +15,12 @@
                         <div class="alert alert-danger">{{$error}}</div>
                     @endforeach
                 @endif
+                @if (session()->has('success'))
+    
+                <div class="alert alert-success">
+                     {{session()->get("success")}}
+                    </div>
+        @endif
                 <div class="card col-11">
 
                 <div class="card-header text-center">Cadastro de Participantes</div>
