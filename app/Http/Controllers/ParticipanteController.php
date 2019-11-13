@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateParticipante;
 use App\{Evento, Participante};
 use DB;
+use DateTime;
 
 class ParticipanteController extends Controller
 {
@@ -30,13 +31,19 @@ class ParticipanteController extends Controller
 
     public function store(CreateParticipante $request){
 
-        //Favor manter esses tipos de return comentados quando der push pro git. Vlw!
-        // return ($request);
         DB::beginTransaction();
         
-        
         try {
-            $participante = Participante::create($request->all());
+            $participante = Participante::create([
+                'nome'            => $request->nome,
+                'rg'              => $request->rg,
+                'cpf'             => $request->cpf,
+                'email'           => $request->email,
+                'telefone'        => $request->telefone,
+                'data_nascimento' => DateTime::createFromFormat('d/m/Y', $request->data_nascimento)->format('Y-m-d'),
+                'organizacao'     => $request->organizacao,  
+            ]);
+
             $evento = Evento::find($request->eventos);
             $participante->evento()->attach($evento);
             DB::commit();
@@ -54,12 +61,21 @@ class ParticipanteController extends Controller
         return view('participante.atualizar', compact('participante'));
     }
 
-    public function update(CreateParticipante $request, $id){
+    public function update(Request $request, $id){
         DB::beginTransaction();
 
         try {
             $participante = Participante::findOrFail($id);
-            $participante->update($request->all());
+            $participante->update([
+                'nome'            => $request->nome,
+                'rg'              => $request->rg,
+                'cpf'             => $request->cpf,
+                'email'           => $request->email,
+                'telefone'        => $request->telefone,
+                'data_nascimento' => DateTime::createFromFormat('d/m/Y', $request->data_nascimento)->format('Y-m-d'),
+                'organizacao'     => $request->organizacao,  
+            ]);
+
             DB::commit();
             return redirect('/participante')->with('success', 'Participante Atualizado com sucesso.');
         } catch(Exception $e){

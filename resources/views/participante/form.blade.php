@@ -46,7 +46,7 @@
                                 <span class="input-group-text"><i class="material-icons">picture_in_picture</i></span>
                             </div>
                             <input required type="text" id="cpf" name="cpf"  maxlength="14" class="form-control" placeholder="CPF" value="{{old('cpf', isset($participante) ? $participante->cpf : '')}}">
-                            {{$errors->first('cpf')}}
+                           
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
                                 <span class="input-group-text"><i class="material-icons">email</i></span>
                             </div>
                             <input required type="email" id="email" name="email" class="form-control" placeholder="fulano@gmail.com (email)" value="{{old('email', isset($participante) ? $participante->email : '')}}">
-                            {{$errors->first('email')}}
+                           
                         </div>
 
                         <div class="input-group col-sm-4">
@@ -64,14 +64,13 @@
                                 <span class="input-group-text"><i class="material-icons">phone</i></span>
                             </div>
                             <input  required type="text" id="telefone" name="telefone"  class="form-control" placeholder="Telefone" value="{{old('telefone', isset($participante) ? $participante->telefone : '')}}">
-                            {{$errors->first('telefone')}}
                         </div>
 
                         <div class="input-group col-sm-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="material-icons">calendar_today</i></span>
                             </div>
-                            <input required type="date" max="9999-12-31" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="Data de nascimento" value="{{old('data_nascimento', isset($participante) ? $participante->data_nascimento : '')}}">
+                            <input required type="text" max="9999-12-31" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="Data de nascimento" value="{{old('data_nascimento', isset($participante) ? $participante->data_nascimento : '')}}">
                             
                         </div>
 
@@ -111,14 +110,34 @@
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
-            <script type="text/javascript" src="js/validate-form.js"></script>
-            <script>
             
-                  $(document).ready(function () {
-                      
-                    
+            <script>
 
-                    jQuery.validator.addMethod("verificaespaco", function(value, element) {
+            
+            
+    $(document).ready(function () {
+        
+    jQuery.validator.addMethod("data_nascimento", function(value, element){
+        var date = new Date();
+
+        var value = value.split('/');
+        var value = value[2] + '-' + value[1] + '-' + value[0];
+        
+        var day = date.getDate();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+
+        var today = year + '-' + month + '-' + day;
+
+        var retorno = true;
+
+        if(value > today)
+            retorno = false;
+        
+        return this.optional(element) || retorno;
+    }, "Informe uma data válida")  
+
+    jQuery.validator.addMethod("verificaespaco", function(value, element) {
     return value.indexOf(" ") == -1 ;
   }, "<span style='color:red'>Não pode conter espaços</span>");
 
@@ -178,7 +197,7 @@ jQuery.validator.addMethod("cpf", function(value, element) {
  
      return this.optional(element) || retorno;
  
- }, "<span style='color:red'>Informe um CPF válido</span>");
+ }, "Informe um CPF válido");
 
     $("#form").validate({
         rules:{
@@ -192,6 +211,7 @@ jQuery.validator.addMethod("cpf", function(value, element) {
             },
             data_nascimento:{
                 required:true,
+                data_nascimento: true,
             },
             nome:{
                 required:true,
@@ -208,6 +228,7 @@ jQuery.validator.addMethod("cpf", function(value, element) {
             eventos:{
                 required:true,
             },
+            
         },
         messages:{
             cpf:{
@@ -238,27 +259,26 @@ jQuery.validator.addMethod("cpf", function(value, element) {
         }
     });
 
-
+                    var dataNascimento = $("#data_nascimento");
+                    dataNascimento.mask('00/00/0000');
 
                     var cpf = $("#cpf");
                     cpf.mask('000.000.000-00', {reverse: true});
 
-                    $("#telefone").mask(behavior);
-                    
                     var rg = $("#rg");
                     rg.mask('00.000.000-0');
 
-                 });
-
-                 var behavior = function (val) {
-                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 00000-0009';
-                },
-
-                options = {
-                    onKeyPress: function (val, e, field, options) {
-                        field.mask(behavior.apply({}, arguments), options);
+                    $('#telefone').mask('(00) 0000-00009');
+                    $('#telefone').change(function(event) {
+                    if($(this).val().length == 15){ // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+                        $('#telefone').mask('(00) 00000-0009');
+                    } else {
+                        $('#telefone').mask('(00) 0000-00009');
                     }
-                };
+                    });
+
+                   
+        });
             </script>
         </form>
 @endsection

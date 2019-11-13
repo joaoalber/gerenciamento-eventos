@@ -22,13 +22,14 @@ class CreateParticipante extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
+       
         return [
             'nome'             => 'required|string',
             'rg'               => 'required|',
             'cpf'              => 'required|unique:participante,cpf',
-            'email'            => 'required|email|unique:participante,email'.$this->route('id'),
+            'email'            => 'required|email|unique:participante,email',
             'telefone'         => 'required|',
             'data_nascimento'  => 'required',
             'organizacao'      => 'required|string'
@@ -37,11 +38,11 @@ class CreateParticipante extends FormRequest
 
     public function messages(){
         return[
-            'date' => 'O campo data deve ser uma data',
+            'date'     => 'O campo data deve ser uma data',
             'required' => 'O campo :attribute é obrigatório!',
-            'min' => 'Minimo de :min caracteres!',
-            'max' => 'Máximo de :max caracteres!',
-            'unique' => ':attribute já cadastrado!',
+            'min'      => 'Minimo de :min caracteres!',
+            'max'      => 'Máximo de :max caracteres!',
+            'unique'   => ':attribute já cadastrado!',
         ];
     }
 }
