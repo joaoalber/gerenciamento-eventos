@@ -19,7 +19,7 @@ class EventoController extends Controller
             return redirect('evento?inativos='.($eventosInativos->currentPage()-1).'&ativos='.($eventos->currentPage()));
         }
 
-        return view('evento', compact('eventos', 'eventosInativos',));
+        return view('evento', compact('eventos', 'eventosInativos'));
     }
 
     public function create(){
