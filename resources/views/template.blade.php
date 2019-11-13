@@ -33,41 +33,22 @@
             background-color: #111;
         }
 
-        #menu li h5{
-            padding: 14px 16px;
-            display: block;
-            text-align: center;
-            margin-right: 3rem;
-        }
+#menu li h5{
+    padding: 14px 16px;
+    display: block;
+    text-align: center;
+    margin-right: 3rem;
+}
+
+.error{
+    width: 100%;
+    color: red;
+}
     </style>
     @yield('css')
 </head>
 <body>
-    <!-- <div class="pos-f-l">
-        <div class="collapse navbar-collapse navbar-expand-lg" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu">
-                        <li class="nav-item">
-                            <h5 class="text-white h4">Teste BRAND</h5>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="{{url('/')}}" tabindex="-1" aria-disabled="true">Início</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{url('evento')}}">Eventos <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('participante')}}">Participantes</a>
-                        </li>
-                    </ul>
-            </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </div> -->
+
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Alterna navegação">
@@ -93,6 +74,14 @@
                     <div class="row mr-1 ml-1">
                         <i class="material-icons mr-1">account_circle</i>
                         Participantes
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('cracha\buscar')}}">
+                    <div class="row mr-1 ml-1">
+                        <i class="material-icons mr-1">search</i>
+                        Buscar
                     </div>
                 </a>
             </li>
@@ -142,9 +131,8 @@
             <a class=" mx-auto navbar-brand" href="#">IFSP@2019</a>
         </nav>
 
-@section('js')
-<script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
-<script>
+    <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
+    <script>
         const Toast = Swal.mixin({
             toast: true,
             position: 'top',
@@ -159,7 +147,6 @@
         }
     </script>
 @yield('js')
-@endsection
 
 </body>
 </html>

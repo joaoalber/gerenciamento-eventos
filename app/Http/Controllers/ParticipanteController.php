@@ -40,10 +40,10 @@ class ParticipanteController extends Controller
             $evento = Evento::find($request->eventos);
             $participante->evento()->attach($evento);
             DB::commit();
-            return redirect('/participante')->with('success', 'participante cadastrado com sucesso.');
+            return redirect('/participante')->with('success', 'Participante cadastrado com sucesso.');
         } catch(Exception $e){
             DB::rollback();
-            return $e;
+            return redirect('/participante')->with('error', 'Erro ao cadastrar participante');
         }
         
     }
@@ -61,10 +61,10 @@ class ParticipanteController extends Controller
             $participante = Participante::findOrFail($id);
             $participante->update($request->all());
             DB::commit();
-            return redirect('/participante')->with('success', 'participante atualizado com sucesso.');
+            return redirect('/participante')->with('success', 'Participante Atualizado com sucesso.');
         } catch(Exception $e){
             DB::rollback();
-            return $e;
+            return redirect('/participante')->with('error', 'Erro ao Atualizar participante');
         }
 
     }
@@ -88,7 +88,7 @@ class ParticipanteController extends Controller
 
         } catch(Exception $e){
             DB::rollback();
-            return $e;
+            return back()->with('error', 'Erro ao realizar ação.');
         }
     }
 

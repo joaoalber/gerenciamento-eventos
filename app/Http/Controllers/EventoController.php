@@ -69,6 +69,8 @@ class EventoController extends Controller
 
 
     public function update(Request $request, $id){
+    DB::beginTransaction();
+    try {
         $evento = Evento::findOrFail($id);
         $evento->update(
             [
@@ -80,19 +82,31 @@ class EventoController extends Controller
                 'cancelado' => $request['evento']['cancelado']
             ]
         );
-
-        return redirect('/evento');
+        DB::commit();
+        return redirect('/evento')->with('success', 'Evento atualizado com sucesso!');
+    } catch (\Exception $e) {
+        DB::rollback();
+        return redirect('/evento')->with('error', 'Erro ao atualizar evento!');
+    }
     }
 
     public function destroy($id){
+    DB::beginTransaction();
+    try {
         $evento = Evento::withTrashed()->findOrFail($id);
         if($evento->trashed()){
             $evento->restore();
+            DB::commit();
             return back()->with('success','Evento restaurado com sucesso!');
         } else {
             $evento->delete();
+            DB::commit();
             return back()->with('success','Evento deletado com sucesso!');
         }
+    } catch (\Exception $e) {
+        DB::rollback();
+        return back()->with('error','Erro ao realizar ação.');
+    }
     }
 
     public function listaPresenca($id) {
@@ -108,15 +122,12 @@ class EventoController extends Controller
             'evento_id' => $id
         ];
         $evento_participante = $evento->participante()->get();
-        // return($evento_participante);
+
         return view('adiciona',compact('data','participantes', 'evento_participante'));
     }
 
     public function salvaParticipante(Request $request){
-        // $evento = $request['evento_id'];
-        // $participantes = $request['participantes'];
-        // return $request;
-        //(Flávio) Correção para permitir cadastro e retirada de participantes do evento.
+        
         DB::beginTransaction();
         try {
             $evento = Evento::findOrFail($request['evento_id']);
@@ -128,12 +139,5 @@ class EventoController extends Controller
             DB::rollback();
             return redirect('evento')->with('error','Erro ao cadastrar participantes!');
         }
-
-        // $evento = Evento::FindOrFail($request['evento_id']);
-
-        // foreach($request['participantes'] as $participante_id){
-        //     $evento->participante()->attach($participante_id);
-        // }
-        //dd($request['participantes']);
     }
 }

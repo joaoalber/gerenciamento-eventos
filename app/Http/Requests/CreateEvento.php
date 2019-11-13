@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-class CreateParticipante extends FormRequest
+class CreateEvento extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,10 @@ class CreateParticipante extends FormRequest
     {
         return [
             'nome'             => 'required|string',
-            'rg'               => 'required|',
-            'cpf'              => 'required|unique:participante,cpf',
-            'email'            => 'required|email|unique:participante,email'.$this->route('id'),
-            'telefone'         => 'required|',
-            'data_nascimento'  => 'required',
-            'organizacao'      => 'required|string'
+            'local'            => 'required|string',
+            'data'             => 'required',
+            'descricao'        => 'required|string',
+            'hora'             => 'required'
         ];
     }
 
