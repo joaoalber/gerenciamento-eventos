@@ -2,17 +2,18 @@
 @section('title', 'Atualizar Dados')
 @section('content')
 
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-            <div class="alert alert-danger">{{$error}}</div>
-        @endforeach
-    @endif
+    
 
         <form id="form" method="POST" action="{{url(isset($participante) ? 'participante/update/'.$participante->id : 'participante/store')}}">
         {{csrf_field()}}
         
 
-        <div class="container d-flex h-100 justify-content-center align-items-center" style="min-height: 60vh">
+        <div class="container d-flex h-100 justify-content-center align-items-center row" style="min-height: 60vh">
+        @if($errors->any())
+             @foreach($errors->all() as $error)
+                <div class=" col-md-7 alert alert-danger text-center">{{$error}}</div>
+             @endforeach
+         @endif
         <div class="card col-11">
         <div class="card-header text-center">Atualizar Dados</div>
                 <div class="card-body">
@@ -78,20 +79,24 @@
             </div>
             </div>
 
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+
             <script>
+            
                   $(document).ready(function () { 
-                    var $cpf = $("#cpf");
-                    $cpf.mask('000.000.000-00', {reverse: true});
+                    var cpf = $("#cpf");
+                    cpf.mask('000.000.000-00', {reverse: true});
 
                     $("#telefone").mask(behavior);
                     
-                    var $rg = $("#rg");
-                    $rg.mask('00.000.000-0');
+                    var rg = $("#rg");
+                    rg.mask('00.000.000-0');
 
                  });
 
                  var behavior = function (val) {
-                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 00000-0009';
                 },
 
                 options = {
