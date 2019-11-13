@@ -13,7 +13,7 @@
                 
                 @if($errors->any())
                     @foreach($errors->all() as $error)
-                        <div class="alert alert-danger">{{$error}}</div>
+                    <div class=" col-md-7 alert alert-danger text-center">{{$error}}</div>
                     @endforeach
                 @endif
                 @if (session()->has('success'))

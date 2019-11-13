@@ -61,10 +61,10 @@ class ParticipanteController extends Controller
             $participante = Participante::findOrFail($id);
             $participante->update($request->all());
             DB::commit();
-            return redirect('/participante')->with('success', 'Participante cadastrado com sucesso.');
+            return redirect('/participante')->with('success', 'Participante Atualizado com sucesso.');
         } catch(Exception $e){
             DB::rollback();
-            return redirect('/participante')->with('error', 'Erro ao cadastrar participante');
+            return redirect('/participante')->with('error', 'Erro ao Atualizar participante');
         }
 
     }
