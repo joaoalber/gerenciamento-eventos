@@ -37,4 +37,9 @@ Route::prefix('participante')->group(function() {
     Route::get('show/{participante}', 'ParticipanteController@show');
 });
 
-Route::get('cracha/{participante}/{evento}','CrachaController@index');
+Route::prefix('cracha')->group(function() {
+    Route::get('{participante}/{evento}','CrachaController@index');
+    Route::get('buscar','CrachaController@buscaIndex');
+    Route::post('buscar','CrachaController@buscar');
+    Route::get('buscar','CrachaController@buscaIndex');
+});

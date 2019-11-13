@@ -72,6 +72,14 @@
                     </div>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('cracha\buscar')}}">
+                    <div class="row mr-1 ml-1">
+                        <i class="material-icons mr-1">search</i>
+                        Buscar
+                    </div>
+                </a>
+            </li>
         </div>
     </nav>
 
