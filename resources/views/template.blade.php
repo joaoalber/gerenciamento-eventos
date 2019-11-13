@@ -33,12 +33,17 @@
             background-color: #111;
         }
 
-        #menu li h5{
-            padding: 14px 16px;
-            display: block;
-            text-align: center;
-            margin-right: 3rem;
-        }
+#menu li h5{
+    padding: 14px 16px;
+    display: block;
+    text-align: center;
+    margin-right: 3rem;
+}
+
+.error{
+    width: 100%;
+    color: red;
+}
     </style>
     @yield('css')
 </head>
